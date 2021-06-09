@@ -17,7 +17,7 @@
 
 .header__search {
   display: flex;
-  flex: 1;
+  flex: 1; /*to stretch at much as it can in the available space*/
   align-items: center;
   border-radius: 24px;
 }
