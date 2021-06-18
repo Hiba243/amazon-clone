@@ -47,6 +47,12 @@ const reducer = (state, action) => {
                 ...state,
                 user: action.user
             }
+        
+        case "REMOVE_USER":
+            return {
+                ...state,
+                user: null
+            }     
 
         default:
             return state;
