@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './Header.css'
 import SearchIcon from '@material-ui/icons/Search'
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
@@ -22,15 +22,15 @@ function Header() {
     }
     return (
         <div className="header">
-            <Link to="/">
-                <img src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" className="header__logo"></img>
+            <Link to="/home">
+                <img src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="logo" className="header__logo"></img>
             </Link>
             <div className="header__search">
                 <input className="header__searchInput" type="text"></input>
                 <SearchIcon className="header__searchIcon"></SearchIcon>
             </div>
             <div className="header__nav" >
-                <Link to='/login'>
+                <Link to='/'>
                     <div className="header__option" onClick={handleAuthenticaton}>
                         <span className="header__optionLineOne">Hello {!email ? 'Guest' : user.user.email}</span>
                         <span className="header__optionLineTwo">{email ? 'Sign Out' : 'Sign In'}</span>

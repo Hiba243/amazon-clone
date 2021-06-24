@@ -17,7 +17,7 @@ function Login() {
         auth
             .signInWithEmailAndPassword(email, password)
             .then(auth => {
-                history.push('/')
+                history.push('/home')
                 dispatch({
                     type: "SET_USER",
                     user: auth
@@ -33,7 +33,7 @@ function Login() {
             .then((auth)=>{
                 console.log(auth);
                 if(auth)
-                history.push('/');
+                history.push('/login');
             })
             .catch(error => alert(error.message))
     }
@@ -42,6 +42,7 @@ function Login() {
             <Link to='/'>
                 <img
                     className="login__logo"
+                    alt="login_logo"
                     src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png'
                 />
             </Link>

@@ -1,10 +1,11 @@
 import React from 'react'
 import './Product.css'
 import { useStateValue } from './StateProvider';
-function Product({ id, title, image, price, rating }) {
+import ProductForm  from './ProductForm';
+
+function Product({ id, title, image, price}) {
     const [{basket}, dispatch] = useStateValue();
-    console.log('this is the basket>>>',basket);
-    const addToBasket = () => {
+    const addToBasketHandler = (amount) => {
         dispatch({
             type: 'ADD_TO_BASKET',
             item: {
@@ -12,25 +13,21 @@ function Product({ id, title, image, price, rating }) {
                 title: title,
                 image:  image,
                 price: price,
-                rating: rating
+                amount: amount
             }
         });
-    };
+      };
     return (
-        <div className="product" key={id}>
+        <div className="product">
             <div className="product__info">
-                <p>{title}</p>
+                <p><strong>{title}</strong></p>
                 <p className="product__price"><small>$</small><strong>{price}</strong></p>
-            </div>
-            <div className="product__rating">
-                {Array(rating).fill().map((_, i) => (
-                    <p>🌟</p>
-                ))}
-
-            </div>
-            <img src={image}>
+            </div>            
+            <img src={image} alt="product img">
             </img>
-            <button onClick={addToBasket}>Add to basket</button>
+            <div>
+                <ProductForm id={id} onAddToCart={addToBasketHandler}/>
+            </div>
         </div>
     )
 }
