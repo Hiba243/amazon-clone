@@ -8,12 +8,11 @@ import { auth } from "../firebase";
 import AuthContext from './reducer';
 
 function Header() {
-    
+
     const authCtx = useContext(AuthContext);
     const handleAuthenticaton = () => {
         console.log(authCtx.isLoggedIn)
         if (authCtx.isLoggedIn) {
-            authCtx.removeUserEmail();
             authCtx.logout();
         }
     }
@@ -29,7 +28,7 @@ function Header() {
                 <SearchIcon className="header__searchIcon"></SearchIcon>
             </div>
             <div className="header__nav" >
-                <Link to='/'>
+                <Link to={authCtx.isLoggedIn ? '/': '/login'}>
                     <div className="header__option" onClick={handleAuthenticaton}>
                         <span className="header__optionLineOne">Hello {useremail? useremail: 'Guest'}</span>
                         <span className="header__optionLineTwo">{authCtx.isLoggedIn ? 'Sign Out': 'Sign In'}</span>

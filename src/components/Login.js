@@ -13,8 +13,10 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const authCtx = useContext(AuthContext);
+    
     const submitHandler = (event) => {
         event.preventDefault();
+        
         fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCvSenJcIf-qkx863u0Ebb6rpzsD5E7NfI', {
             method: 'POST',
             body: JSON.stringify({
@@ -43,15 +45,15 @@ function Login() {
             })
             .then((data) => {
               console.log(data.email);
+              
               const expirationTime = new Date(
                 new Date().getTime() + +data.expiresIn * 1000
               );
-              authCtx.login(data.idToken, expirationTime.toISOString(),data.email);
-              authCtx.addUserEmail(
-                {
-                  email:data.email
-                });
-              history.push('/home');
+              
+              authCtx.login(data.idToken, expirationTime.toISOString(),data.email);   
+                      
+              history.push('/');
+              
             })
             .catch((err) => {
               alert(err.message);
@@ -90,7 +92,7 @@ function Login() {
               new Date().getTime() + +data.expiresIn * 1000
             );
             authCtx.login(data.idToken, expirationTime.toISOString());
-            history.push('/home');
+            history.push('/login');
           })
           .catch((err) => {
             alert(err.message);
@@ -148,7 +150,7 @@ function Login() {
                     see our Privacy Notice, our Cookies Notice and our Interest-Based Ads Notice.
                 </p>
 
-                <button onClick={register} className='login__registerButton'>Create your Amazon Account</button>
+                <button onClick={submitHandlerForSignUp} className='login__registerButton'>Create your Amazon Account</button>
             </div>
         </div>
     )

@@ -13,20 +13,20 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
-          {authCtx.isLoggedIn && <Route path="/home">
-            <Header />
-            <Home />
-          </Route>
-          }
-          {authCtx.isLoggedIn && <Route path="/checkout">
+            
+          
+          <Route path="/checkout">
             <Header />
             <Checkout />
           </Route>
-          }
-          <Route path="/">
+          
+          <Route path="/login">
             <Login />
           </Route>
-        
+          <Route path="/">
+            <Header />
+            <Home />
+          </Route>
         </Switch>
       </div>
     </Router>

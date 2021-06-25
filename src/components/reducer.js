@@ -8,7 +8,6 @@ const AuthContext = React.createContext({
   email: '',
   isLoggedIn: false,
   basket: [],
-  user: null,
   totalAmount: 0,
   login: (token) => {},
   logout: () => {},
@@ -20,14 +19,13 @@ const AuthContext = React.createContext({
 const defaultCartState = {
   basket: [],
   totalAmount: 0,
-  user:null
 };
 const cartReducer = (state, action) => {
   if (action.type === 'ADD') {
     console.log(state);
     const updatedTotalAmount =
       (state.totalAmount + (action.item.price * action.item.amount));
-
+    console.log(state.totalAmount);
     const existingCartItemIndex = state.basket.findIndex(
       (item) => item.id === action.item.id
     );
@@ -73,18 +71,6 @@ const cartReducer = (state, action) => {
 
   if (action.type === 'CLEAR') {
     return defaultCartState;
-  }
-  if (action.type === 'ADD_USER_EMAIL') {
-    console.log("adding email user");
-    console.log(action.email.email);
-    
-    
-    return {
-      user: action.email.email
-    }
-  }
-  if (action.type === 'REMOVE_USER_EMAIL') {
-    return {user:null};
   }
 
   return defaultCartState;
@@ -183,14 +169,6 @@ export const AuthContextProvider = (props) => {
   const clearCartHandler = () => {
     dispatchCartAction({type: 'CLEAR'});
   };
-
-  const addUserEmailHandler = (email) => {
-    dispatchCartAction({type: 'ADD_USER_EMAIL', email: email});
-  };
-
-  const removeUserEmailHandler = () => {
-    dispatchCartAction({type: 'REMOVE_USER_EMAIL'});
-  };
   
   const contextValue = {
     token: token,
@@ -204,8 +182,6 @@ export const AuthContextProvider = (props) => {
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
     clearCart: clearCartHandler,
-    addUserEmail: addUserEmailHandler,
-    removeUserEmail: removeUserEmailHandler 
   };
   return (
     <AuthContext.Provider value={contextValue}>
