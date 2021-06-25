@@ -1,22 +1,22 @@
-import React from 'react'
+import {useContext} from 'react'
 import './Product.css'
 import { useStateValue } from './StateProvider';
 import ProductForm  from './ProductForm';
+import AuthContext from './reducer';
+import { auth } from '../firebase';
 
 function Product({ id, title, image, price}) {
-    const [{basket}, dispatch] = useStateValue();
+    const authCtx = useContext(AuthContext);
+
     const addToBasketHandler = (amount) => {
-        dispatch({
-            type: 'ADD_TO_BASKET',
-            item: {
-                id: id,
-                title: title,
-                image:  image,
-                price: price,
-                amount: amount
-            }
-        });
-      };
+        authCtx.addItem({
+            id: id,
+            title: title,
+            image:  image,
+            price: price,
+            amount: amount
+        });     
+    };
     return (
         <div className="product">
             <div className="product__info">

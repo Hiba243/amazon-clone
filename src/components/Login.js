@@ -1,16 +1,101 @@
 import React from 'react'
 import './Login.css'
 import { Link , useHistory} from "react-router-dom";
-import  {useState} from 'react'
+import  {useState, useContext} from 'react'
 import {auth} from '../firebase';
 import { useStateValue } from "./StateProvider";
+import AuthContext from './reducer';
 
 function Login() {
-    const [{basket,user}, dispatch] = useStateValue();
+   
 
     const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const authCtx = useContext(AuthContext);
+    const submitHandler = (event) => {
+        event.preventDefault();
+        fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCvSenJcIf-qkx863u0Ebb6rpzsD5E7NfI', {
+            method: 'POST',
+            body: JSON.stringify({
+              email: email,
+              password: password,
+              returnSecureToken: true,
+            }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
+            .then((res) => {
+              if (res.ok) {
+                console.log(res);
+                return res.json();
+              } else {
+                return res.json().then((data) => {
+                  let errorMessage = 'Authentication failed!';
+                  // if (data && data.error && data.error.message) {
+                  //   errorMessage = data.error.message;
+                  // }
+
+                  throw new Error(errorMessage);
+                });
+              }
+            })
+            .then((data) => {
+              console.log(data.email);
+              const expirationTime = new Date(
+                new Date().getTime() + +data.expiresIn * 1000
+              );
+              authCtx.login(data.idToken, expirationTime.toISOString(),data.email);
+              authCtx.addUserEmail(
+                {
+                  email:data.email
+                });
+              history.push('/home');
+            })
+            .catch((err) => {
+              alert(err.message);
+            });
+    };
+
+    const submitHandlerForSignUp = (event) => {
+      event.preventDefault();
+      fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCvSenJcIf-qkx863u0Ebb6rpzsD5E7NfI', {
+          method: 'POST',
+          body: JSON.stringify({
+            email: email,
+            password: password,
+            returnSecureToken: true,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            } else {
+              return res.json().then((data) => {
+                let errorMessage = 'Authentication failed!';
+                // if (data && data.error && data.error.message) {
+                //   errorMessage = data.error.message;
+                // }
+    
+                throw new Error(errorMessage);
+              });
+            }
+          })
+          .then((data) => {
+            const expirationTime = new Date(
+              new Date().getTime() + +data.expiresIn * 1000
+            );
+            authCtx.login(data.idToken, expirationTime.toISOString());
+            history.push('/home');
+          })
+          .catch((err) => {
+            alert(err.message);
+          });
+  };
 
     const signIn = e => {
         e.preventDefault();
@@ -18,10 +103,7 @@ function Login() {
             .signInWithEmailAndPassword(email, password)
             .then(auth => {
                 history.push('/home')
-                dispatch({
-                    type: "SET_USER",
-                    user: auth
-                });
+                
             })
             .catch(error => alert(error.message))
     }
@@ -58,7 +140,7 @@ function Login() {
                     <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
 
 
-                    <button type='submit' onClick={signIn} className='login__signInButton'>Sign In</button>
+                    <button type='submit' onClick={submitHandler} className='login__signInButton'>Sign In</button>
                 </form>
 
                 <p>

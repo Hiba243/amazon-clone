@@ -1,27 +1,23 @@
-import React from 'react'
+import {useContext} from 'react'
 import './CheckoutProduct.css'
 import { useStateValue } from './StateProvider';
+import AuthContext from './reducer';
 
 function CheckoutProduct({id,image,price,title,rating,amount}) {
-    const [{ basket }, dispatch] = useStateValue();
+    const authCtx = useContext(AuthContext);
+
     const removeFromBasket = () => {
         console.log('removing item');
-        dispatch({
-            type: 'REMOVE_FROM_BASKET',
-            id: id
-        })
+        authCtx.removeItem(id);
     }
     const addToBasketHandler = () => {
-        dispatch({
-            type: 'ADD_TO_BASKET',
-            item: {
-                id: id,
-                title: title,
-                image:  image,
-                price: price,
-                amount: 1
-            }
-        });
+        authCtx.addItem({
+            id: id,
+            title: title,
+            image:  image,
+            price: price,
+            amount: 1
+        }); 
       };
     return (
         <div className="checkoutProduct" key={id}>

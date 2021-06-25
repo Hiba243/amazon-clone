@@ -1,25 +1,24 @@
-import React from 'react'
+import {useContext} from 'react'
 import './Header.css'
 import SearchIcon from '@material-ui/icons/Search'
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
 import { Link } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
 import { auth } from "../firebase";
+import AuthContext from './reducer';
 
 function Header() {
     
-    const [{basket,user}, dispatch] = useStateValue();
-    var email=null;
-    if(user)
-    email=user.user.email;
+    const authCtx = useContext(AuthContext);
     const handleAuthenticaton = () => {
-        if (email) {
-            dispatch({
-                type: "REMOVE_USER",
-                user: auth
-            });
+        console.log(authCtx.isLoggedIn)
+        if (authCtx.isLoggedIn) {
+            authCtx.removeUserEmail();
+            authCtx.logout();
         }
     }
+    const useremail=authCtx.email;
+    console.log(useremail);
     return (
         <div className="header">
             <Link to="/home">
@@ -32,8 +31,8 @@ function Header() {
             <div className="header__nav" >
                 <Link to='/'>
                     <div className="header__option" onClick={handleAuthenticaton}>
-                        <span className="header__optionLineOne">Hello {!email ? 'Guest' : user.user.email}</span>
-                        <span className="header__optionLineTwo">{email ? 'Sign Out' : 'Sign In'}</span>
+                        <span className="header__optionLineOne">Hello {useremail? useremail: 'Guest'}</span>
+                        <span className="header__optionLineTwo">{authCtx.isLoggedIn ? 'Sign Out': 'Sign In'}</span>
                     </div>
                 </Link>
                 <div className="header__option">
@@ -47,7 +46,7 @@ function Header() {
                 <Link to="/checkout">
                     <div className="header__optionBasket">
                         <ShoppingBasketIcon />
-                        <span className="header__optionLineTwo header__basketCount">{basket?.length}</span>
+                        <span className="header__optionLineTwo header__basketCount">{authCtx.basket?.length}</span>
                     </div>
                 </Link>
             </div>
