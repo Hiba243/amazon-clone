@@ -7,30 +7,38 @@ function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState();
   useEffect(() => {
-    const fetchMeals = async () => {
-      const response = await fetch('https://clone-d6025-default-rtdb.asia-southeast1.firebasedatabase.app//products.json');
-      if (!response.ok) {
-        throw new Error("Something went wrong");
-      }
-      const responseData = await response.json();
-      const loadedMeals = [];
-      for (const key in responseData) {
-        loadedMeals.push({
-          id: key,
-          title: responseData[key].title,
-          price: responseData[key].price,
-          image: responseData[key].image
-        });
-      }
-      setMeals(loadedMeals);
-      setIsLoading(false);
-    };
+    if (!localStorage.getItem('product-list')) {
+      console.log("first time");
+      const fetchMeals = async () => {
+        const response = await fetch('https://clone-d6025-default-rtdb.asia-southeast1.firebasedatabase.app//products.json');
+        if (!response.ok) {
+          throw new Error("Something went wrong");
+        }
+        const responseData = await response.json();
+        const loadedMeals = [];
+        for (const key in responseData) {
+          loadedMeals.push({
+            id: key,
+            title: responseData[key].title,
+            price: responseData[key].price,
+            image: responseData[key].image
+          });
+        }
+        localStorage.setItem('product-list', JSON.stringify(loadedMeals));
+        setMeals(loadedMeals);
+        setIsLoading(false);
+      };
 
 
-    fetchMeals().catch(error => {
-      setIsLoading(false);
-      setHttpError(error.message);
-    });
+      fetchMeals().catch(error => {
+        setIsLoading(false);
+        setHttpError(error.message);
+      });
+    }
+    else {
+      const prodarr = localStorage.getItem('product-list');
+      setMeals(JSON.parse(prodarr));
+    }
   }, []);
 
   const mealsList = meals.map((meal) => <Product
