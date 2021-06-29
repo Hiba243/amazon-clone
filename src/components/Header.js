@@ -18,13 +18,26 @@ function Header() {
     }
     const useremail=authCtx.email;
     console.log(useremail);
+
+    const setSearch = (e) => {
+        const meals=authCtx.listOfItems;
+        console.log(meals);
+        let filteredProducts;
+        filteredProducts =  meals.filter((product) => product.tags.toLowerCase().includes(e)); 
+        authCtx.addFilteredListOfItems(filteredProducts);
+        console.log(authCtx.filteredList);
+    }
     return (
         <div className="header">
             <Link to="/home">
                 <img src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="logo" className="header__logo"></img>
             </Link>
             <div className="header__search">
-                <input className="header__searchInput" type="text"></input>
+                <input className="header__searchInput" type="text"
+                onChange={(e) => {
+                    setSearch(e.target.value.toLowerCase());
+                  }}
+                ></input>
                 <SearchIcon className="header__searchIcon"></SearchIcon>
             </div>
             <div className="header__nav" >

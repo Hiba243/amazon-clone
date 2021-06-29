@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState,useContext } from 'react'
 import './Home.css'
 import Product from './Product'
-function Home() {
+import AuthContext from './reducer';
 
+function Home() {
+  const authCtx = useContext(AuthContext);
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState();
   useEffect(() => {
-    if (!localStorage.getItem('product-list')) {
+    if (!sessionStorage.getItem('product-list')) {
       console.log("first time");
       const fetchMeals = async () => {
         const response = await fetch('https://clone-d6025-default-rtdb.asia-southeast1.firebasedatabase.app//products.json');
@@ -21,11 +23,13 @@ function Home() {
             id: key,
             title: responseData[key].title,
             price: responseData[key].price,
-            image: responseData[key].image
+            image: responseData[key].image,
+            tags: responseData[key].tags
           });
         }
-        localStorage.setItem('product-list', JSON.stringify(loadedMeals));
+        sessionStorage.setItem('product-list', JSON.stringify(loadedMeals));
         setMeals(loadedMeals);
+        authCtx.addListOfItems(loadedMeals);
         setIsLoading(false);
       };
 
@@ -36,19 +40,20 @@ function Home() {
       });
     }
     else {
-      const prodarr = localStorage.getItem('product-list');
+      const prodarr = sessionStorage.getItem('product-list');
       setMeals(JSON.parse(prodarr));
     }
   }, []);
 
   const mealsList = meals.map((meal) => <Product
-    key={meal.id}
-    id={meal.id}
-    title={meal.title}
-    price={meal.price}
-    image={meal.image}
+  key={meal.id}
+  id={meal.id}
+  title={meal.title}
+  price={meal.price}
+  image={meal.image}
   />
   );
+
 
   return (
     <div className="home">

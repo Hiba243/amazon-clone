@@ -8,6 +8,8 @@ const AuthContext = React.createContext({
   email: '',
   isLoggedIn: false,
   basket: [],
+  listOfItems: [],
+  filteredList: [],
   totalAmount: 0,
   login: (token) => {},
   logout: () => {},
@@ -15,10 +17,14 @@ const AuthContext = React.createContext({
   removeFromBasket: (id) => {},
   addUserEmail: (email) => {},
   removeUserEmail: () => {},
+  addListOfItems: (item) => {},
+  addFilteredListOfItems: (item) => {},
 });
 const defaultCartState = {
   basket: [],
   totalAmount: 0,
+  listOfItems: [],
+  filteredList: [],
 };
 const cartReducer = (state, action) => {
   if (action.type === 'ADD') {
@@ -46,6 +52,8 @@ const cartReducer = (state, action) => {
     return {
       basket: updatedItems,
       totalAmount: updatedTotalAmount,
+      listOfItems: state.listOfItems,
+      filteredList: state.filteredList,
     };
   }
   if (action.type === 'REMOVE') {
@@ -65,8 +73,43 @@ const cartReducer = (state, action) => {
 
     return {
       basket: updatedItems,
-      totalAmount: updatedTotalAmount
+      totalAmount: updatedTotalAmount,
+      listOfItems: state.listOfItems,
+      filteredList: state.filteredList,
     };
+  }
+
+  if (action.type === 'ADDLISTOFITEMS') {
+    console.log("reached here");
+    let updatedList;
+    updatedList = state.listOfItems.concat(action.item);
+    console.log(state);
+    console.log(state.listOfItems);
+    console.log(updatedList);
+    console.log(state);
+    return{
+      basket: state.basket,
+      totalAmount: state.totalAmount,
+      listOfItems: updatedList,
+      filteredList: state.filteredList,
+    }
+  }
+
+  if (action.type === 'ADDFILTEREDLIST') {
+   
+    let filteredListItems;
+    filteredListItems = action.item;
+    console.log(state);
+    console.log(state.filteredList);
+    console.log(action.item);
+    console.log(filteredListItems);
+    sessionStorage.setItem('filtered-list',JSON.stringify(action.item));
+    return{
+      basket: state.basket,
+      totalAmount: state.totalAmount,
+      listOfItems: state.listOfItems,
+      filteredList: filteredListItems,
+    }
   }
 
   if (action.type === 'CLEAR') {
@@ -169,6 +212,14 @@ export const AuthContextProvider = (props) => {
   const clearCartHandler = () => {
     dispatchCartAction({type: 'CLEAR'});
   };
+
+  const addListOfItemsHandler = (item) => {
+    dispatchCartAction({type: 'ADDLISTOFITEMS', item: item });
+  };
+
+  const addFilteredListOfItemsHandler = (item) => {
+    dispatchCartAction({type: 'ADDFILTEREDLIST', item: item });
+  };
   
   const contextValue = {
     token: token,
@@ -178,10 +229,14 @@ export const AuthContextProvider = (props) => {
     logout: logoutHandler,
     basket: cartState.basket,
     totalAmount: cartState.totalAmount,
+    listOfItems: cartState.listOfItems,
+    filteredListItems: cartState.filteredListItems,
     user:cartState.user,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
     clearCart: clearCartHandler,
+    addListOfItems: addListOfItemsHandler,
+    addFilteredListOfItems: addFilteredListOfItemsHandler,
   };
   return (
     <AuthContext.Provider value={contextValue}>

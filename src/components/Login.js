@@ -52,7 +52,7 @@ function Login() {
               
               authCtx.login(data.idToken, expirationTime.toISOString(),data.email);   
                       
-              history.push('/');
+              history.goBack();
               
             })
             .catch((err) => {

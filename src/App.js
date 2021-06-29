@@ -10,12 +10,12 @@ import AuthContext from './components/reducer';
 function App() {
   const authCtx = useContext(AuthContext);
   useEffect(()=>{
-    const data=localStorage.getItem('basket-list');
+    const data=sessionStorage.getItem('basket-list');
     if(data)
     authCtx.addItem(JSON.parse(data));
   },[]);
   useEffect(()=>{
-    localStorage.setItem('basket-list',JSON.stringify(authCtx.basket));
+    sessionStorage.setItem('basket-list',JSON.stringify(authCtx.basket));
   })
   return (
     <Router>
