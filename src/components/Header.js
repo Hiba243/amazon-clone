@@ -41,6 +41,7 @@ function Header() {
                   }}
                 ></input> */}
                 <Autocomplete
+                    className="AutoComplete"
                     value={value}
                     onChange={(event, newValue) => {                      
                       setValue(newValue);
@@ -53,7 +54,7 @@ function Header() {
                     id="combo-box-demo"
                     options={list}
                     getOptionLabel={(option) => option.category}
-                    renderInput={(params) => <TextField {...params} variant="outlined" />}
+                    renderInput={(params) => <TextField {...params}/>}
                 />
                 
             </div>

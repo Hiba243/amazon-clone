@@ -6,6 +6,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  justify-content: space-between;
 }
 
 .header__logo {
@@ -16,7 +17,6 @@
 }
 
 .header__search {
-  display: flex;
   flex: 1; /*to stretch at much as it can in the available space*/
   align-items: center;
   border-radius: 24px;
@@ -70,6 +70,8 @@
 
 #combo-box-demo{
   background-color: white;
-  width: 48rem;
-  color: black;
+  padding-left: .5rem;
+}
+.AutoComplete.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon .MuiAutocomplete-inputRoot{
+padding-right: 0;
 }
