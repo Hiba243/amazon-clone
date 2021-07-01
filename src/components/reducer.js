@@ -27,11 +27,10 @@ const defaultCartState = {
   filteredList: [],
 };
 const cartReducer = (state, action) => {
+  console.log(state);
   if (action.type === 'ADD') {
-    console.log(state);
     const updatedTotalAmount =
       (state.totalAmount + (action.item.price * action.item.amount));
-    console.log(state.totalAmount);
     const existingCartItemIndex = state.basket.findIndex(
       (item) => item.id === action.item.id
     );
@@ -80,13 +79,10 @@ const cartReducer = (state, action) => {
   }
 
   if (action.type === 'ADDLISTOFITEMS') {
-    console.log("reached here");
+   
     let updatedList;
     updatedList = state.listOfItems.concat(action.item);
-    console.log(state);
-    console.log(state.listOfItems);
-    console.log(updatedList);
-    console.log(state);
+   
     return{
       basket: state.basket,
       totalAmount: state.totalAmount,
@@ -97,18 +93,14 @@ const cartReducer = (state, action) => {
 
   if (action.type === 'ADDFILTEREDLIST') {
    
-    let filteredListItems;
-    filteredListItems = action.item;
-    console.log(state);
-    console.log(state.filteredList);
-    console.log(action.item);
-    console.log(filteredListItems);
-    sessionStorage.setItem('filtered-list',JSON.stringify(action.item));
+    let filt;
+    state.filteredList=[];
+    filt =state.filteredList.concat(action.item);
     return{
+      filteredList: filt,
       basket: state.basket,
       totalAmount: state.totalAmount,
       listOfItems: state.listOfItems,
-      filteredList: filteredListItems,
     }
   }
 
@@ -191,7 +183,7 @@ export const AuthContextProvider = (props) => {
   };
   useEffect(() => {
     if (tokenData) {
-      console.log(tokenData.duration);
+     
       logoutTimer = setTimeout(logoutHandler, tokenData.duration);
     }
   }, [tokenData, logoutHandler]);
@@ -230,7 +222,7 @@ export const AuthContextProvider = (props) => {
     basket: cartState.basket,
     totalAmount: cartState.totalAmount,
     listOfItems: cartState.listOfItems,
-    filteredListItems: cartState.filteredListItems,
+    filteredList: cartState.filteredList,
     user:cartState.user,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,

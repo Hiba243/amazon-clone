@@ -1,8 +1,7 @@
-import {useContext} from 'react'
 import './Checkout.css'
+import {useContext} from 'react'
 import Subtotal from './Subtotal'
 import CheckoutProduct from './CheckoutProduct'
-import { useStateValue } from './StateProvider'
 import AuthContext from './reducer';
 
 function Checkout() {

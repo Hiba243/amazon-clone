@@ -1,7 +1,6 @@
-import {useContext} from 'react'
 import './Subtotal.css'
+import {useContext} from 'react'
 import CurrencyFormat from "react-currency-format"
-import { useStateValue } from "./StateProvider";
 import { getBasketTotal } from "./reducer";
 import AuthContext from './reducer';
 
@@ -15,7 +14,6 @@ function Subtotal() {
                 renderText={(value) => (
                     <>
                         <p>
-                            {/* Part of the homework */}
                             Subtotal {basket?.length} items: <strong>{value}</strong>
                         </p>
                         <small className="subtotal__gift">
@@ -24,7 +22,7 @@ function Subtotal() {
                     </>
                 )}
                 decimalScale={2}
-                value={basket} // Part of the homework
+                value={basket}
                 displayType={"text"}
                 thousandSeparator={true}
                 prefix={"$"}

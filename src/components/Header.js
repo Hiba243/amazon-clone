@@ -1,15 +1,19 @@
-import {useContext} from 'react'
 import './Header.css'
+import {useContext,useState} from 'react'
 import SearchIcon from '@material-ui/icons/Search'
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
-import { Link } from "react-router-dom";
-import { useStateValue } from "./StateProvider";
-import { auth } from "../firebase";
+import { Link, useHistory } from "react-router-dom";
 import AuthContext from './reducer';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 function Header() {
-
+    const history = useHistory();
     const authCtx = useContext(AuthContext);
+    const list=authCtx.listOfItems;
+    const [value, setValue] = useState(list[0]);
+    const [inputValue, setInputValue] = useState('');
+
     const handleAuthenticaton = () => {
         console.log(authCtx.isLoggedIn)
         if (authCtx.isLoggedIn) {
@@ -17,28 +21,41 @@ function Header() {
         }
     }
     const useremail=authCtx.email;
-    console.log(useremail);
-
+    
     const setSearch = (e) => {
-        const meals=authCtx.listOfItems;
-        console.log(meals);
-        let filteredProducts;
-        filteredProducts =  meals.filter((product) => product.tags.toLowerCase().includes(e)); 
-        authCtx.addFilteredListOfItems(filteredProducts);
-        console.log(authCtx.filteredList);
+        if(e){
+        let url="/filtered/" + e;
+        history.push(url);
+        }
     }
+    
     return (
         <div className="header">
             <Link to="/home">
                 <img src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="logo" className="header__logo"></img>
             </Link>
             <div className="header__search">
-                <input className="header__searchInput" type="text"
+                {/* <input className="header__searchInput" type="text"
                 onChange={(e) => {
                     setSearch(e.target.value.toLowerCase());
                   }}
-                ></input>
-                <SearchIcon className="header__searchIcon"></SearchIcon>
+                ></input> */}
+                <Autocomplete
+                    value={value}
+                    onChange={(event, newValue) => {                      
+                      setValue(newValue);
+                      setSearch(newValue?.category);
+                    }}
+                    inputValue={inputValue}
+                    onInputChange={(event, newInputValue) => {
+                    setInputValue(newInputValue);
+                    }}
+                    id="combo-box-demo"
+                    options={list}
+                    getOptionLabel={(option) => option.category}
+                    renderInput={(params) => <TextField {...params} variant="outlined" />}
+                />
+                
             </div>
             <div className="header__nav" >
                 <Link to={authCtx.isLoggedIn ? '/': '/login'}>

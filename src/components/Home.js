@@ -1,51 +1,54 @@
-import { useEffect, useState,useContext } from 'react'
 import './Home.css'
+import { useEffect, useState,useContext } from 'react'
 import Product from './Product'
 import AuthContext from './reducer';
 
 function Home() {
   const authCtx = useContext(AuthContext);
-  const [meals, setMeals] = useState([]);
+  const [products, setproducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState();
+  
   useEffect(() => {
     if (!sessionStorage.getItem('product-list')) {
-      console.log("first time");
-      const fetchMeals = async () => {
+      const fetchproducts = async () => {
         const response = await fetch('https://clone-d6025-default-rtdb.asia-southeast1.firebasedatabase.app//products.json');
         if (!response.ok) {
           throw new Error("Something went wrong");
         }
         const responseData = await response.json();
-        const loadedMeals = [];
+        const loadedproducts = [];
         for (const key in responseData) {
-          loadedMeals.push({
+          loadedproducts.push({
             id: key,
             title: responseData[key].title,
             price: responseData[key].price,
             image: responseData[key].image,
-            tags: responseData[key].tags
+            tags: responseData[key].tags,
+            category: responseData[key].category,
           });
         }
-        sessionStorage.setItem('product-list', JSON.stringify(loadedMeals));
-        setMeals(loadedMeals);
-        authCtx.addListOfItems(loadedMeals);
+        sessionStorage.setItem('product-list', JSON.stringify(loadedproducts));
+        setproducts(loadedproducts);
+        authCtx.addListOfItems(loadedproducts);
         setIsLoading(false);
       };
 
 
-      fetchMeals().catch(error => {
+      fetchproducts().catch(error => {
         setIsLoading(false);
         setHttpError(error.message);
       });
     }
     else {
       const prodarr = sessionStorage.getItem('product-list');
-      setMeals(JSON.parse(prodarr));
+      setproducts(JSON.parse(prodarr));
+      authCtx.addListOfItems(JSON.parse(prodarr));
+      console.log(authCtx);
     }
-  }, []);
+  },[]);
 
-  const mealsList = meals.map((meal) => <Product
+  const productsList = products.map((meal) => <Product
   key={meal.id}
   id={meal.id}
   title={meal.title}
@@ -53,7 +56,6 @@ function Home() {
   image={meal.image}
   />
   );
-
 
   return (
     <div className="home">
@@ -65,7 +67,7 @@ function Home() {
         />
       </div>
       <div className="home__row">
-        <ul className="ul">{mealsList}</ul>
+        <ul className="ul">{productsList}</ul>
       </div>
     </div>
   )

@@ -2,32 +2,40 @@ import './App.css';
 import Header from './components/Header';
 import Home from './components/Home'
 import Checkout from './components/Checkout'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import FilteredProducts from './components/FilteredProducts'
 import Login from './components/Login';
+import ProductDetail from './components/ProductDetail';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {useContext,useEffect} from "react";
 import AuthContext from './components/reducer';
 
 function App() {
   const authCtx = useContext(AuthContext);
   useEffect(()=>{
-    const data=sessionStorage.getItem('basket-list');
+    const data=localStorage.getItem('basket-list');
     if(data)
     authCtx.addItem(JSON.parse(data));
   },[]);
   useEffect(()=>{
-    sessionStorage.setItem('basket-list',JSON.stringify(authCtx.basket));
+    localStorage.setItem('basket-list',JSON.stringify(authCtx.basket));
   })
+
   return (
     <Router>
       <div className="app">
-        <Switch>
-            
-          
+        <Switch>         
           <Route path="/checkout">
             <Header />
             <Checkout />
           </Route>
-          
+          <Route path="/filtered/:filterTag">
+            <Header />
+            <FilteredProducts />
+          </Route>
+          <Route path="/products/:productId">
+            <Header />
+            <ProductDetail />
+          </Route>
           <Route path="/login">
             <Login />
           </Route>

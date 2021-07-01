@@ -1,9 +1,6 @@
-import React from 'react'
 import './Login.css'
 import { Link , useHistory} from "react-router-dom";
 import  {useState, useContext} from 'react'
-import {auth} from '../firebase';
-import { useStateValue } from "./StateProvider";
 import AuthContext from './reducer';
 
 function Login() {
@@ -30,7 +27,6 @@ function Login() {
           })
             .then((res) => {
               if (res.ok) {
-                console.log(res);
                 return res.json();
               } else {
                 return res.json().then((data) => {
@@ -38,14 +34,11 @@ function Login() {
                   // if (data && data.error && data.error.message) {
                   //   errorMessage = data.error.message;
                   // }
-
                   throw new Error(errorMessage);
                 });
               }
             })
-            .then((data) => {
-              console.log(data.email);
-              
+            .then((data) => {              
               const expirationTime = new Date(
                 new Date().getTime() + +data.expiresIn * 1000
               );
@@ -99,28 +92,6 @@ function Login() {
           });
   };
 
-    const signIn = e => {
-        e.preventDefault();
-        auth
-            .signInWithEmailAndPassword(email, password)
-            .then(auth => {
-                history.push('/home')
-                
-            })
-            .catch(error => alert(error.message))
-    }
-
-    const register = e => {
-        e.preventDefault();
-        auth
-            .createUserWithEmailAndPassword(email,password)
-            .then((auth)=>{
-                console.log(auth);
-                if(auth)
-                history.push('/login');
-            })
-            .catch(error => alert(error.message))
-    }
     return (
         <div className="login">
             <Link to='/'>

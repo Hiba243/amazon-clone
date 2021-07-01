@@ -1,13 +1,11 @@
-import {useContext} from 'react'
 import './CheckoutProduct.css'
-import { useStateValue } from './StateProvider';
+import {useContext} from 'react'
 import AuthContext from './reducer';
 
-function CheckoutProduct({id,image,price,title,rating,amount}) {
+function CheckoutProduct({id,image,price,title,amount}) {
     const authCtx = useContext(AuthContext);
 
     const removeFromBasket = () => {
-        console.log('removing item');
         authCtx.removeItem(id);
     }
     const addToBasketHandler = () => {
@@ -18,7 +16,7 @@ function CheckoutProduct({id,image,price,title,rating,amount}) {
             price: price,
             amount: 1
         }); 
-      };
+    };
     return (
         <div className="checkoutProduct" key={id}>
             <img src={image} alt="" className="checkoutProduct__image"/>
