@@ -27,7 +27,6 @@ const defaultCartState = {
   filteredList: [],
 };
 const cartReducer = (state, action) => {
-  console.log(state);
   if (action.type === 'ADD') {
     const updatedTotalAmount =
       (state.totalAmount + (action.item.price * action.item.amount));

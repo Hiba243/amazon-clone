@@ -44,7 +44,6 @@ function Home() {
       const prodarr = sessionStorage.getItem('product-list');
       setproducts(JSON.parse(prodarr));
       authCtx.addListOfItems(JSON.parse(prodarr));
-      console.log(authCtx);
     }
   },[]);
 
