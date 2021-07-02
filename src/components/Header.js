@@ -6,16 +6,15 @@ import { Link, useHistory } from "react-router-dom";
 import AuthContext from './reducer';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import useProducts from './use-products';
 
 function Header() {
     const history = useHistory();
     const authCtx = useContext(AuthContext);
-    const list=authCtx.listOfItems;
+    const list= useProducts();
     const [value, setValue] = useState(list[0]);
     const [inputValue, setInputValue] = useState('');
-
     const handleAuthenticaton = () => {
-        console.log(authCtx.isLoggedIn)
         if (authCtx.isLoggedIn) {
             authCtx.logout();
         }
