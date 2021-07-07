@@ -8,6 +8,7 @@ import ProductDetail from './components/ProductDetail';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {useContext,useEffect} from "react";
 import AuthContext from './components/reducer';
+import Register from './components/Register';
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
           </Route>
           <Route path="/">
             <Header />

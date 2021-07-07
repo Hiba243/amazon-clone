@@ -11,7 +11,12 @@ import useProducts from './use-products';
 function Header() {
     const history = useHistory();
     const authCtx = useContext(AuthContext);
-    const list= useProducts();
+    let list= useProducts();
+    list = [
+        ...new Set(
+          list.map((product) => { return product.category; })
+        ),
+      ];
     const [value, setValue] = useState(list[0]);
     const [inputValue, setInputValue] = useState('');
     const handleAuthenticaton = () => {
@@ -42,17 +47,16 @@ function Header() {
                 <Autocomplete
                     className="AutoComplete"
                     value={value}
-                    onChange={(event, newValue) => {                      
+                    onChange={(event, newValue) => {                     
                       setValue(newValue);
-                      setSearch(newValue?.category);
+                      setSearch(newValue);
                     }}
                     inputValue={inputValue}
                     onInputChange={(event, newInputValue) => {
                     setInputValue(newInputValue);
                     }}
                     id="combo-box-demo"
-                    options={list}
-                    getOptionLabel={(option) => option.category}
+                    options={list}                   
                     renderInput={(params) => <TextField {...params}/>}
                 />
                 

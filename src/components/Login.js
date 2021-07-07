@@ -45,7 +45,7 @@ function Login() {
               
               authCtx.login(data.idToken, expirationTime.toISOString(),data.email);   
                       
-              history.goBack();
+              history.push("/home");
               
             })
             .catch((err) => {
@@ -55,41 +55,7 @@ function Login() {
 
     const submitHandlerForSignUp = (event) => {
       event.preventDefault();
-      fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCvSenJcIf-qkx863u0Ebb6rpzsD5E7NfI', {
-          method: 'POST',
-          body: JSON.stringify({
-            email: email,
-            password: password,
-            returnSecureToken: true,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-          .then((res) => {
-            if (res.ok) {
-              return res.json();
-            } else {
-              return res.json().then((data) => {
-                let errorMessage = 'Authentication failed!';
-                // if (data && data.error && data.error.message) {
-                //   errorMessage = data.error.message;
-                // }
-    
-                throw new Error(errorMessage);
-              });
-            }
-          })
-          .then((data) => {
-            const expirationTime = new Date(
-              new Date().getTime() + +data.expiresIn * 1000
-            );
-            authCtx.login(data.idToken, expirationTime.toISOString());
-            history.push('/login');
-          })
-          .catch((err) => {
-            alert(err.message);
-          });
+      history.push("/register");  
   };
 
     return (
