@@ -9,6 +9,8 @@ function Login() {
     const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isLoggingIn, setIsLoggingIn] = useState(false);
+    const [isRegistered, setIsRegistered] = useState(false);
     const authCtx = useContext(AuthContext);
     
     const submitHandler = (event) => {
@@ -27,6 +29,7 @@ function Login() {
           })
             .then((res) => {
               if (res.ok) {
+                setIsLoggingIn(true);
                 return res.json();
               } else {
                 return res.json().then((data) => {
@@ -43,10 +46,9 @@ function Login() {
                 new Date().getTime() + +data.expiresIn * 1000
               );
               
-              authCtx.login(data.idToken, expirationTime.toISOString(),data.email);   
-                      
-              history.push("/home");
-              
+              authCtx.login(data.idToken, expirationTime.toISOString(),data.email);  
+              setIsLoggingIn(false); 
+              history.goBack();
             })
             .catch((err) => {
               alert(err.message);
@@ -55,7 +57,35 @@ function Login() {
 
     const submitHandlerForSignUp = (event) => {
       event.preventDefault();
-      history.push("/register");  
+      fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCvSenJcIf-qkx863u0Ebb6rpzsD5E7NfI', {
+          method: 'POST',
+          body: JSON.stringify({
+            email: email,
+            password: password,
+            returnSecureToken: true,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+          .then((res) => {
+            if (res.ok) {
+              setIsRegistered(true);
+              return res.json();
+            } else {
+              return res.json().then((data) => {
+                let errorMessage = 'Authentication failed!';
+                // if (data && data.error && data.error.message) {
+                //   errorMessage = data.error.message;
+                // }
+    
+                throw new Error(errorMessage);
+              });
+            }
+          })
+          .catch((err) => {
+            alert(err.message);
+          });
   };
 
     return (
@@ -70,7 +100,8 @@ function Login() {
 
             <div className='login__container'>
                 <h1>Sign-in</h1>
-
+                {isLoggingIn && <p>Logging in...</p>}
+                {isRegistered && <p>Registered Successfully, proceed for sign in</p>}
                 <form>
                 <h5>E-mail</h5>
                     <input type='text' value={email} onChange={e => setEmail(e.target.value)} />

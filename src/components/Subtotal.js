@@ -3,22 +3,32 @@ import {useContext} from 'react'
 import CurrencyFormat from "react-currency-format"
 import { getBasketTotal } from "./reducer";
 import AuthContext from './reducer';
+import { useHistory } from "react-router-dom";
 
 function Subtotal() {
 
     const authCtx = useContext(AuthContext);
+    const basketLength=authCtx.basket.length;
     const basket=getBasketTotal(authCtx.basket);
+    const history = useHistory();
+    const goToCheckout = () => {       
+        if(!authCtx.isLoggedIn){
+           history.push('/login')
+        }
+        else{
+            history.push('/payment')
+        }
+    }
+   
     return (
         <div className="subtotal">
             <CurrencyFormat
                 renderText={(value) => (
                     <>
                         <p>
-                            Subtotal {basket?.length} items: <strong>{value}</strong>
+                            Subtotal {basketLength} items: <strong>{value}</strong>
                         </p>
-                        <small className="subtotal__gift">
-                            <input type="checkbox" /> This order contains a gift
-                        </small>
+                       
                     </>
                 )}
                 decimalScale={2}
@@ -27,7 +37,7 @@ function Subtotal() {
                 thousandSeparator={true}
                 prefix={"$"}
             />
-            <button>Proceed to checkout</button>
+            {basketLength>0 && <button onClick={goToCheckout}>Proceed to checkout</button>}
         </div>
     )
 }

@@ -62,7 +62,7 @@ function Header() {
                 
             </div>
             <div className="header__nav" >
-                <Link to={authCtx.isLoggedIn ? '/': '/login'}>
+                <Link to={authCtx.isLoggedIn ? history.location.pathname : '/login'}>
                     <div className="header__option" onClick={handleAuthenticaton}>
                         <span className="header__optionLineOne">Hello {useremail? useremail: 'Guest'}</span>
                         <span className="header__optionLineTwo">{authCtx.isLoggedIn ? 'Sign Out': 'Sign In'}</span>
