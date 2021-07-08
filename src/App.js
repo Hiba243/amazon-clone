@@ -18,7 +18,7 @@ const promise= loadStripe('pk_test_51JAszhSF3XO15ySUFDYqeN2mPoDY4cKb0VQ4xjWMNqdl
 
 function App() {
   
-  const [{basket}, dispatch] = useStateValue();
+  const [{basket, user}, dispatch] = useStateValue();
   useEffect(()=>{
     const data=localStorage.getItem('basket-list');
     if(data)
@@ -68,12 +68,12 @@ function App() {
             <Header />
             <ProductDetail />
           </Route>
-          <Route path="/payment">
+          {user && <Route path="/payment">
             <Header />
             <Elements stripe={promise}>
             <Payment/>
             </Elements>
-          </Route>
+          </Route>}
           <Route path="/login">
             <Login />
           </Route>

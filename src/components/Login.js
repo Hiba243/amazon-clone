@@ -33,7 +33,6 @@ function Login() {
               // it successfully created a new user with email and password
               if (auth) {
                   setIsRegistered(true);
-                  history.push('/login')
               }
           })
           .catch(error => alert(error.message))
@@ -52,7 +51,7 @@ function Login() {
             <div className='login__container'>
                 <h1>Sign-in</h1>
                 {isLoggingIn && <p>Logging in...</p>}
-                {isRegistered && <p>Registered Successfully, proceed for sign in</p>}
+                {isRegistered ? <p className="info-msg">Registered Successfully, proceed for sign in</p> : <p></p>}
                 <form>
                 <h5>E-mail</h5>
                     <input type='text' value={email} onChange={e => setEmail(e.target.value)} />
