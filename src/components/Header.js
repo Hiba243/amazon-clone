@@ -1,16 +1,17 @@
 import './Header.css'
-import {useContext,useState} from 'react'
+import {useState} from 'react'
 import SearchIcon from '@material-ui/icons/Search'
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
 import { Link, useHistory } from "react-router-dom";
-import AuthContext from './reducer';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import useProducts from './use-products';
+import { useStateValue } from "./StateProvider";
+import { auth } from "../firebase";
 
 function Header() {
     const history = useHistory();
-    const authCtx = useContext(AuthContext);
+    const [{ basket,user }, dispatch] = useStateValue();
     let list= useProducts();
     list = [
         ...new Set(
@@ -20,11 +21,8 @@ function Header() {
     const [value, setValue] = useState(list[0]);
     const [inputValue, setInputValue] = useState('');
     const handleAuthenticaton = () => {
-        if (authCtx.isLoggedIn) {
-            authCtx.logout();
-        }
+        auth.signOut();
     }
-    const useremail=authCtx.email;
     
     const setSearch = (e) => {
         if(e){
@@ -62,10 +60,10 @@ function Header() {
                 
             </div>
             <div className="header__nav" >
-                <Link to={authCtx.isLoggedIn ? history.location.pathname : '/login'}>
+                <Link to={!user ? '/login' : ''}>
                     <div className="header__option" onClick={handleAuthenticaton}>
-                        <span className="header__optionLineOne">Hello {useremail? useremail: 'Guest'}</span>
-                        <span className="header__optionLineTwo">{authCtx.isLoggedIn ? 'Sign Out': 'Sign In'}</span>
+                        <span className="header__optionLineOne">Hello {!user ? 'Guest' : user.email}</span>
+                        <span className="header__optionLineTwo">{user ? 'Sign Out' : 'Sign In'}</span>
                     </div>
                 </Link>
                 <div className="header__option">
@@ -79,7 +77,7 @@ function Header() {
                 <Link to="/checkout">
                     <div className="header__optionBasket">
                         <ShoppingBasketIcon />
-                        <span className="header__optionLineTwo header__basketCount">{authCtx.basket?.length}</span>
+                        <span className="header__optionLineTwo header__basketCount">{basket?.length}</span>
                     </div>
                 </Link>
             </div>

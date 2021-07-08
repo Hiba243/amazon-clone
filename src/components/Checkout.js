@@ -1,12 +1,10 @@
 import './Checkout.css'
-import {useContext} from 'react'
 import Subtotal from './Subtotal'
 import CheckoutProduct from './CheckoutProduct'
-import AuthContext from './reducer';
+import { useStateValue } from "./StateProvider";
 
 function Checkout() {
-    const authCtx = useContext(AuthContext);
-    const basket=authCtx.basket;
+    const [{basket}] = useStateValue();
     return (
         <div className="checkout">
            <div className="checkout__left">

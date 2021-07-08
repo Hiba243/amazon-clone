@@ -1,20 +1,21 @@
 import './Product.css'
-import {useContext} from 'react'
 import ProductForm  from './ProductForm';
-import AuthContext from './reducer';
 import {Link} from "react-router-dom";
+import { useStateValue } from "./StateProvider";
 
 function Product({ id, title, image, price}) {
-    const authCtx = useContext(AuthContext);
-
+    const [{basket},dispatch] = useStateValue();
     const addToBasketHandler = (amount) => {
-        authCtx.addItem({
-            id: id,
-            title: title,
-            image:  image,
-            price: price,
-            amount: amount
-        });     
+        dispatch({
+            type: "ADD_TO_BASKET",
+            item: {
+              id: id,
+              title: title,
+              image: image,
+              price: price,
+              amount: amount,
+            },
+          });
     };
     
     return (

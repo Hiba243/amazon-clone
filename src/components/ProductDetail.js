@@ -1,12 +1,10 @@
 import './ProductDetail.css'
-import { useContext } from 'react'
 import ProductForm from './ProductForm';
-import AuthContext from './reducer';
 import { useParams } from "react-router-dom";
 import useProducts from './use-products';
-
+import { useStateValue } from "./StateProvider";
 function ProductDetail() {
-  const authCtx = useContext(AuthContext);
+  const [{ basket,user }, dispatch] = useStateValue();
   const params = useParams();
   const products = useProducts();
 
@@ -14,12 +12,15 @@ function ProductDetail() {
   filteredList = products.filter(item => item.id === params.productId);
 
   const addToBasketHandler = (amount) => {
-    authCtx.addItem({
-      id: filteredList[0].id,
-      title: filteredList[0].title,
-      image: filteredList[0].image,
-      price: filteredList[0].price,
-      amount: amount
+    dispatch({
+      type: "ADD_TO_BASKET",
+      item: {
+        id: filteredList[0].id,
+        title: filteredList[0].title,
+        image: filteredList[0].image,
+        price: filteredList[0].price,
+        amount: amount,
+      },
     });
   };
 
