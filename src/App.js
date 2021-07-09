@@ -8,6 +8,7 @@ import ProductDetail from './components/ProductDetail';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {useEffect} from "react";
 import Register from './components/Register';
+import Error from './components/Error';
 import Payment from './components/Payment';
 import {loadStripe} from "@stripe/stripe-js";
 import {Elements}  from "@stripe/react-stripe-js";
@@ -80,10 +81,11 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
-          <Route path="/">
-            <Header />
-            <Home />
+          <Route exact path="/" >
+            <Header/>
+            <Home/>
           </Route>
+          <Route component={Error} />
         </Switch>
       </div>
     </Router>
