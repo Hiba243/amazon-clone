@@ -1,6 +1,6 @@
 import './CheckoutProduct.css'
 import { useStateValue } from "./StateProvider";
-function CheckoutProduct({id,image,price,title,amount}) {
+function CheckoutProduct({id,image,price,title,amount,hidebutton}) {
     const [{ basket,user }, dispatch] = useStateValue();
     const removeFromBasket = () => {
         dispatch({
@@ -32,8 +32,8 @@ function CheckoutProduct({id,image,price,title,amount}) {
                     <strong>{price}</strong>
                 </p>
                 <p>Amount: {amount}</p>
-                <button onClick={removeFromBasket}>-</button>
-                <button onClick={addToBasketHandler}>+</button>
+                {hidebutton && <button onClick={removeFromBasket}>-</button>}
+                {hidebutton &&  <button onClick={addToBasketHandler}>+</button>}
             </div>
         </div>
     )
