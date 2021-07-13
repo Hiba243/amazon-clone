@@ -32,8 +32,8 @@ function CheckoutProduct({id,image,price,title,amount,hidebutton}) {
                     <strong>{price}</strong>
                 </p>
                 <p>Amount: {amount}</p>
-                {hidebutton && <button onClick={removeFromBasket}>-</button>}
-                {hidebutton &&  <button onClick={addToBasketHandler}>+</button>}
+                {!hidebutton && <button onClick={removeFromBasket}>-</button>}
+                {!hidebutton &&  <button onClick={addToBasketHandler}>+</button>}
             </div>
         </div>
     )

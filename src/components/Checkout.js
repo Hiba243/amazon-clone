@@ -20,6 +20,7 @@ function Checkout() {
                         price={item.price}
                         rating={item.rating}
                         amount={item.amount}
+                        hidebutton={false}
                         />
                     ))}
                 </div>

@@ -14,14 +14,14 @@ function Order({ order }) {
             </p>
             {order.data.basket?.map(item => (
                 <CheckoutProduct
-                hideButton
+                
                     key={item.id}
                     id={item.id}
                     title={item.title}
                     image={item.image}
                     price={item.price}
-                    rating={item.rating}
-                    
+                    amount={item.amount}
+                    hidebutton={true}
                 />
             ))}
             <CurrencyFormat
@@ -29,7 +29,7 @@ function Order({ order }) {
                     <h3 className="order__total">Order Total: {value}</h3>
                 )}
                 decimalScale={2}
-                value={order.data.amount}
+                value={order.data.amount / 100}
                 displayType={"text"}
                 thousandSeparator={true}
                 prefix={"$"}

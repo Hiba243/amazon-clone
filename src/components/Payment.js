@@ -31,14 +31,13 @@ function Payment() {
                 url: `/payments/create?total=${getBasketTotal(basket) * 100}`
             });
             setClientSecret(response.data.clientSecret)
-            console.log(response.data);
         }
 
         getClientSecret();
     }, [basket])
 
     console.log('THE SECRET IS >>>', clientSecret)
-    console.log('👱', user.uid)
+    console.log('👱', user)
 
     const handleSubmit = async (event) => {
         // do all the fancy stripe stuff...
@@ -50,18 +49,18 @@ function Payment() {
                 card: elements.getElement(CardElement)
             }
         }).then(({ paymentIntent }) => {
-            console.log(paymentIntent);
             // paymentIntent = payment confirmation
+
             db
-            .collection('users')
-            .doc(user?.uid)
-            .collection('orders')
-            .doc(user?.uid+1)
-            .set({
-                basket: basket,
-                created: Date.now(),
-                amount: getBasketTotal(basket)
-            })
+              .collection('users')
+              .doc(user?.uid)
+              .collection('orders')
+              .doc(paymentIntent.id)
+              .set({
+                  basket: basket,
+                  amount: paymentIntent.amount,
+                  created: paymentIntent.created
+              })
 
             setSucceeded(true);
             setError(null)
@@ -112,13 +111,14 @@ function Payment() {
                     </div>
                     <div className='payment__items'>
                         {basket.map(item => (
-                            <CheckoutProduct 
+                            <CheckoutProduct
                                 key={item.id}
                                 id={item.id}
                                 title={item.title}
                                 image={item.image}
                                 price={item.price}
                                 amount={item.amount}
+                                
                             />
                         ))}
                     </div>
@@ -131,7 +131,8 @@ function Payment() {
                         <h3>Payment Method</h3>
                     </div>
                     <div className="payment__details">
-                           
+                            {/* Stripe magic will go */}
+
                             <form onSubmit={handleSubmit}>
                                 <CardElement onChange={handleChange}/>
 
