@@ -6,34 +6,36 @@ import FilteredProducts from './components/FilteredProducts'
 import Login from './components/Login';
 import ProductDetail from './components/ProductDetail';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import {useEffect} from "react";
+import { useEffect } from "react";
 import Register from './components/Register';
 import Error from './components/Error';
 import Payment from './components/Payment';
-import {loadStripe} from "@stripe/stripe-js";
-import {Elements}  from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import { useStateValue } from "./components/StateProvider";
-import {auth} from "./firebase";
+import { auth } from "./firebase";
 import Orders from './components/Orders'
+import CategoryBar from './components/CategoryBar'
+import FilteredByTag from './components/FilterByTag';
 
-const promise= loadStripe('pk_test_51JAszhSF3XO15ySUFDYqeN2mPoDY4cKb0VQ4xjWMNqdl3M3sWxXCcVx487splKGO4tZHyxRzsXwUM2kfpoT3WDkQ00hHsp5sYM');
+const promise = loadStripe('pk_test_51JAszhSF3XO15ySUFDYqeN2mPoDY4cKb0VQ4xjWMNqdl3M3sWxXCcVx487splKGO4tZHyxRzsXwUM2kfpoT3WDkQ00hHsp5sYM');
 
 function App() {
-  
-  const [{basket, user}, dispatch] = useStateValue();
-  useEffect(()=>{
-    const data=localStorage.getItem('basket-list');
-    if(data)
-    dispatch({
-      type: "ADD_TO_BASKET",
-      item: (JSON.parse(data)),
-    });
-  },[]);
-  useEffect(()=>{
-    localStorage.setItem('basket-list',JSON.stringify(basket));
+
+  const [{ basket, user }, dispatch] = useStateValue();
+  useEffect(() => {
+    const data = localStorage.getItem('basket-list');
+    if (data)
+      dispatch({
+        type: "ADD_TO_BASKET",
+        item: (JSON.parse(data)),
+      });
+  }, []);
+  useEffect(() => {
+    localStorage.setItem('basket-list', JSON.stringify(basket));
   })
 
-  useEffect(()=>{
+  useEffect(() => {
 
     auth.onAuthStateChanged((authUser) => {
 
@@ -52,32 +54,42 @@ function App() {
         });
       }
     });
-  },[]);
+  }, []);
 
   return (
     <Router>
       <div className="app">
         <Switch>
-        <Route path="/orders">
-          <Header/>
-            <Orders/>
-          </Route>         
+          <Route path="/orders">
+            <Header />
+            <Orders />
+          </Route>
           <Route path="/checkout">
             <Header />
+
             <Checkout />
+          </Route>
+          <Route path="/filtered/:filterTag/:tag">
+            <Header />
+
+            <FilteredByTag />
           </Route>
           <Route path="/filtered/:filterTag">
             <Header />
+
             <FilteredProducts />
           </Route>
+
           <Route path="/products/:productId">
             <Header />
+
             <ProductDetail />
           </Route>
           {user && <Route path="/payment">
             <Header />
+
             <Elements stripe={promise}>
-            <Payment/>
+              <Payment />
             </Elements>
           </Route>}
           <Route path="/login">
@@ -87,13 +99,14 @@ function App() {
             <Register />
           </Route>
           <Route exact path="/" >
-            <Header/>
-            <Home/>
+            <Header />
+            <CategoryBar />
+            <Home />
           </Route>
           <Route path="/" >
-          <Header/>
-            <Home/>
-            </Route>
+            <Header />
+            <Home />
+          </Route>
         </Switch>
       </div>
     </Router>
