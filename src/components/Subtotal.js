@@ -1,12 +1,12 @@
 import './Subtotal.css'
 import CurrencyFormat from "react-currency-format"
 import { getBasketTotal } from "./reducer";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
 
 function Subtotal() {
     const [{ basket,user }, dispatch] = useStateValue();
-   
+   console.log(user);
     const basketLength=basket.length;
   
     const history = useHistory();
@@ -21,6 +21,7 @@ function Subtotal() {
    
     return (
         <div className="subtotal">
+            {user ? <Link to="/orders">Your order history</Link> : ''}
             <CurrencyFormat
                 renderText={(value) => (
                     <>

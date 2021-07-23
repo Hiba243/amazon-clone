@@ -2,7 +2,7 @@
   height: 60px;
   display: flex;
   align-items: center;
-  background-color: #131921;
+  background-color: #c4293c;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -58,6 +58,7 @@
 .header__nav {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .header__option {

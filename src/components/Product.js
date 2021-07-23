@@ -20,15 +20,21 @@ function Product({ id, title, image, price}) {
     
     return (
         <div className="product">
-            <div className="product__info">
-                <Link to={"/products/"+id}><p><strong>{title}</strong></p></Link>
-                <p className="product__price"><small>$</small><strong>{price}</strong></p>
-            </div>            
+                      
             <img src={image} alt="product img">
             </img>
-            <div>
+            <div className="desc">
+            <div className="product__info">
+                <Link to={"/products/"+id} style={{color:'white'}}><p><strong>SuperBalm</strong></p></Link></div>  
+                <div className="product__info-price-desc">
+                    <p  style={{color:'white'}}>lip balm</p>
+                <p className="product__price"  style={{color:'white'}}>${price}</p>
+                </div>
+                </div>
+            
+            {/* <div>
                 <ProductForm id={id} onAddToCart={addToBasketHandler}/>
-            </div>
+            </div> */}
         </div>
     )
 }

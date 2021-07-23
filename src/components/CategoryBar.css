@@ -1,9 +1,9 @@
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
   
-    background-color:white;
+    background-color:#c4293c;
 }
 @media only screen and (max-width: 26.875em) {
     .navbar {
@@ -112,7 +112,7 @@
    
     border: none;
     outline: none;
-    color: black;
+    color: white;
     padding: .5rem;
     background-color: inherit;
     font-family: inherit;
@@ -128,7 +128,7 @@
     display: none;
     position: absolute;
     left: 0;
-    background-color: white;
+    background-color: #c4293c;
     width: 100%;
     height: 3rem;
     z-index: 1;
@@ -137,14 +137,13 @@
   .subnav-content a {
     display: flex;
     align-self: center;
-    color: black;
     text-decoration: none;
     font-size: 13px;
-    color:black
+    color:white
   }
   
   .subnav-content a:hover {
-    background-color: #eee;
+   
     color: black;
   }
   
@@ -155,6 +154,6 @@
    border-top:1px solid black;
   }
   .subnav:hover .subnavbtn{
-      background-color: black;
-      color:white;
+      
+      color:black;
   }

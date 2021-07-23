@@ -1,4 +1,4 @@
-import './ProductDetail.css'
+import './Product.css'
 import ProductForm from './ProductForm';
 import { useParams } from "react-router-dom";
 import useProducts from './use-products';

@@ -74,7 +74,7 @@ const CategoryBar = () => {
                     </div>
                     <div className="link-flex">
                         <div className="subnav">
-                            <Link to="/filtered/electronic" className="nav__link link-effect" onClick={closeMenu}>
+                            <Link to="/filtered/electronic" className="link-effect" onClick={closeMenu}>
                                 <button className="subnavbtn">Electronics</button>
                             </Link>
                             <div className="subnav-content">
