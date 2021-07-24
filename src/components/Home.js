@@ -17,16 +17,45 @@ function Home() {
   return (
     <div className="home">
       <div className="home__container">
-        <img
-          className="home__image"
-          src="https://images.ctfassets.net/vnxry7jc7f2k/6qLnklOHdp6QrLvsYptzhT/0da0711f319ec077517e14fc65d34174/slider_oil-01.jpg?w=1800&h=1119&q=80&fm=webp"
-          alt=""
-        />
+      </div>
+      <div className="features">
+        <div className="feature__1">
+          <p>FIND</p>
+          <p>01.Unique and Meaningful Jewellery</p>
+          <p>From handcrafted treasures to vintage finds to heritage icons</p>
+        </div>
+        <div className="feature__1">
+        <p>FIND</p>
+          <p>01.Unique and Meaningful Jewellery</p>
+          <p>From handcrafted treasures to vintage finds to heritage icons</p>
+        </div>
+        <div className="feature__1">
+        <p>FIND</p>
+          <p>01.Unique and Meaningful Jewellery</p>
+          <p>From handcrafted treasures to vintage finds to heritage icons</p>
+        </div>
       </div>
       <div className="home__row">
         {productsList} 
         {productsList[0]} 
         {productsList[1]} 
+      </div>
+      <marquee className="marquee-features">This text will scroll from right to left</marquee>
+      <div className="home__row categories">
+        {productsList[2]} 
+        {productsList[0]} 
+      </div>
+      <div className="home__row categories"> 
+        {productsList[1]} 
+        {productsList[3]} 
+      </div>
+      <div className="extra-features">
+        <div className="extra-features-content">
+          <p>SUPER clean beauty</p>
+        </div>
+        <div className="extra-features-img">
+
+        </div>
       </div>
     </div>
   )

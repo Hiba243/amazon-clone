@@ -5,7 +5,7 @@ const useProducts = () => {
     useEffect(() => {
         if (!sessionStorage.getItem('product-list')) {
             const fetchproducts = async () => {
-                const response = await fetch('https://clone-d6025-default-rtdb.asia-southeast1.firebasedatabase.app//products.json');
+                const response = await fetch('https://clone-d6025-default-rtdb.asia-southeast1.firebasedatabase.app/products.json');
                 if (!response.ok) {
                     throw new Error("Something went wrong");
                 }

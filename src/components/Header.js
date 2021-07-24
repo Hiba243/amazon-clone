@@ -33,8 +33,8 @@ function Header() {
     
     return (
         <div className="header">
-            <Link to="/">
-                <img src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="logo" className="header__logo"></img>
+            <Link to="/" className="logo">
+                <h1>SUPERFLUID</h1>
             </Link>
             <div className="header__search">
                 {/* <input className="header__searchInput" type="text"
@@ -60,7 +60,7 @@ function Header() {
                 
             </div>
             <div className="header__nav" >
-                <Link to={!user ? '/login' : history.location.pathname}>
+                <Link to={!user ? '/login' : history.location.pathname} className="no-underline">
                     <div className="header__option" onClick={handleAuthenticaton}>
                         {/* <span className="header__optionLineOne">Hello {!user ? 'Guest' : user.email}</span> */}
                         
