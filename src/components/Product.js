@@ -25,13 +25,13 @@ function Product({ id, title, image, price}) {
             </img>
             <div className="desc">
             <div className="product__info">
-                <Link to={"/products/"+id} style={{color:'white'}}><p><strong>SuperBalm</strong></p></Link></div>  
+                
                 <div className="product__info-price-desc">
-                    <p  style={{color:'white'}}>lip balm</p>
-                <p className="product__price"  style={{color:'white'}}>${price}</p>
+                <Link to={"/products/"+id}  className="product_name" ><p>{title}</p></Link> 
+                <p className="product__price"  style={{color:'#c4293c'}}>${price}</p>
                 </div>
                 </div>
-            
+            </div>
             {/* <div>
                 <ProductForm id={id} onAddToCart={addToBasketHandler}/>
             </div> */}

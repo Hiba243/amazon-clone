@@ -2,15 +2,28 @@
   margin: 0;
 }
 body {
-  background-color: white;
+  background-color: #F7D002;
   margin: 0;
-  font-family: 'Staatliches', sans-serif;
+  font-family: 'Object Sans', sans-serif;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  padding: 0 2rem;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+@font-face {
+  font-family: 'New York';
+  src: local('New York'), url(./fonts/NewYork.otf) format('truetype');
+}
+@font-face {
+  font-family: 'Object Sans';
+  src: local('Object Sans'), url(./fonts/ObjectSans-Regular.otf) format('truetype');
+}
+a{
+  text-decoration: none;
 }

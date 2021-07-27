@@ -100,7 +100,7 @@ function App() {
           </Route>
           <Route exact path="/" >
             <Header />
-            <CategoryBar />
+          
             <Home />
           </Route>
           <Route path="/" >
