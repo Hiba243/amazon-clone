@@ -83,9 +83,9 @@
 padding-right: 0;
 }
 .logo{
-  
+  font-size: 2rem;
   text-decoration: none;
- 
+  font-family: "Object Sans Heavy Slanted";
   color: #c4293c;
   position: absolute;
   left: 50%;
@@ -105,7 +105,7 @@ padding-right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: .5rem 0;
+  padding: 2rem 0;
   background-color: transparent;
   
   

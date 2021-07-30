@@ -2,7 +2,7 @@
   margin: 0;
 }
 body {
-  background-color: #F7D002;
+  background-color: #FFFFFF;
   margin: 0;
   font-family: 'Object Sans', sans-serif;
 
@@ -17,13 +17,22 @@ code {
     monospace;
 }
 @font-face {
-  font-family: 'New York';
-  src: local('New York'), url(./fonts/NewYork.otf) format('truetype');
+  font-family: 'Object Sans Heavy';
+  src: local('Object Sans Heavy'), url(./fonts/ObjectSans-Heavy.otf) format('truetype');
 }
 @font-face {
   font-family: 'Object Sans';
   src: local('Object Sans'), url(./fonts/ObjectSans-Regular.otf) format('truetype');
 }
+@font-face {
+  font-family: 'Object Sans Heavy Slanted';
+  src: local('Object Sans Heavy Slanted'), url(./fonts/ObjectSans-HeavySlanted.otf) format('truetype');
+}
+@font-face {
+  font-family: 'Object Sans Slanted';
+  src: local('Object Sans Slanted'), url(./fonts/ObjectSans-Slanted.otf) format('truetype');
+}
+
 a{
   text-decoration: none;
 }

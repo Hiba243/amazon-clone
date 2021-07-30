@@ -4,7 +4,6 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 1500px;
-  margin-top: 5rem;
  
 }
 
@@ -61,22 +60,22 @@
   border-radius: 10%;
 }
 .home__container{
-  text-align: center;
-  position: relative;
+  object-fit: contain;
+  width: 100%;
+ 
+ 
 }
 .heading{
-  position: absolute;
-  font-family: 'New York'  !important;
-  top: 1%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  font-size: 9rem;
+  
+  font-family: 'Object Sans Slanted';
+ 
+  
   color: #c4293c;
-  font-weight: 100;
+  font-size: 8rem;
 }
 .heading-beauty{
   position: absolute;
-  font-family: 'New York'  !important;
+  
   bottom: -7%;
   left: 50%;
   transform: translate(-50%,7%);
@@ -97,7 +96,6 @@
   padding: 10rem 0 0 0;
 }
 .abt-content{
-  font-family: 'New York';
   font-size: 3rem;
 }
 .abt-img{
@@ -117,12 +115,9 @@
   flex-direction: column;
   align-items: center;
 }
-.best-sellers-heading{
-  font-family: 'New York';
-}
+
 .heading-home{
   margin:5rem 0 3rem 0;
-  font-family: 'New York';
   text-align: center;
   font-size: 5rem;
 }

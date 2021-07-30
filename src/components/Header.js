@@ -109,9 +109,10 @@ function Header() {
           <span className="bar"></span>
           <span className="bar"></span>
         </div>
-       
+       <div className="logo">SUPER SKIN</div>
            
              <div className="flex-au">
+               
              <div className="header__search">
                
                  <Autocomplete

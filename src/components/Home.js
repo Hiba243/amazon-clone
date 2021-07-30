@@ -3,6 +3,8 @@ import Product from './Product'
 import useProducts from './use-products';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
+import Image from '../img/Capture.JPG';
+import Image2 from '../img/Captured.JPG';
 
 const items = [
   <div className="item" data-value="1"><img src="https://images.ctfassets.net/vnxry7jc7f2k/5Xra2xQwAg0moYjschl66s/c01263879933895ee760cebd1dd4bf8f/cleanser_1.jpg?w=800&q=80" alt="" className="car-img"/></div>,
@@ -37,21 +39,10 @@ console.log(productCategoryList)
     
     <div className="home">
     
-      <div className="home__container">
-      <AliceCarousel
-        autoPlay
-        autoPlayStrategy="none"
-        autoPlayInterval={1000}
-        animationDuration={1000}
-        animationType="fadeout"
-        infinite
-        touchTracking={false}
-        disableDotsControls
-        disableButtonsControls
-        items={items}
-    />
-    <p className="heading">Magical</p>
-    <p className="heading-beauty">Beauty</p>
+      <div >
+      
+      {/* <img src={Image} className="home__container" /> */}
+      <img src={Image2} className="home__container" alt="" />
       </div>
        <div className="about">
          <div className="abt-img">
@@ -74,9 +65,9 @@ console.log(productCategoryList)
         {productsList[2]} 
       </div>
       <div><p className="heading-home" style={{fontFamily:'Object Sans'}}>IN THE PRESS</p></div>
-      <marquee className="marquee-features" style={{fontFamily:'New York'}}>Elle - Les Echos - The Sunday Times - British Vogue - Eurowoman - The New York Times - WWD - The Business of Fashion - Elle - Les Echos - The Sunday Times - British Vogue - Eurowoman - The New York Times - WWD - The Business of Fashion - </marquee>
-      <marquee className="marquee-features" style={{fontFamily:'New York'}}>Elle - Les Echos - The Sunday Times - British Vogue - Eurowoman - The New York Times - WWD - The Business of Fashion - Elle - Les Echos - The Sunday Times - British Vogue - Eurowoman - The New York Times - WWD - The Business of Fashion - </marquee>
-      <marquee className="marquee-features" style={{fontFamily:'New York'}}>Elle - Les Echos - The Sunday Times - British Vogue - Eurowoman - The New York Times - WWD - The Business of Fashion - Elle - Les Echos - The Sunday Times - British Vogue - Eurowoman - The New York Times - WWD - The Business of Fashion - </marquee>
+      <marquee className="marquee-features">Elle - Les Echos - The Sunday Times - British Vogue - Eurowoman - The New York Times - WWD - The Business of Fashion - Elle - Les Echos - The Sunday Times - British Vogue - Eurowoman - The New York Times - WWD - The Business of Fashion - </marquee>
+      <marquee className="marquee-features">Elle - Les Echos - The Sunday Times - British Vogue - Eurowoman - The New York Times - WWD - The Business of Fashion - Elle - Les Echos - The Sunday Times - British Vogue - Eurowoman - The New York Times - WWD - The Business of Fashion - </marquee>
+      <marquee className="marquee-features">Elle - Les Echos - The Sunday Times - British Vogue - Eurowoman - The New York Times - WWD - The Business of Fashion - Elle - Les Echos - The Sunday Times - British Vogue - Eurowoman - The New York Times - WWD - The Business of Fashion - </marquee>
       <div><p className="heading-home">Shop by Category</p></div>
       <div className="home__row categories">
         {productCategoryList[0]} 
