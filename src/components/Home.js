@@ -24,24 +24,24 @@ function Home() {
       <div >
         <Link to={"/products/"+id}><img src={images[0] ? images[0].image : ''} className="home__container" alt="" /></Link>
       </div>
+      <div id="productList"><p className="shopProductsHeading">OUR PRODUCTS</p>
+      <p className="shopProductsSubHeading">We created Superfluid with the aim of making skincare easy and stress free, fun and bold. And we forgot - all of our products are also vegan and cruelty free.</p></div>
+      <div className="home__row">
+        {productsList}
+      </div>
       <div className="about" id="about">
         <div className="abt-img">
           <img src="https://images.ctfassets.net/vnxry7jc7f2k/5Xra2xQwAg0moYjschl66s/c01263879933895ee760cebd1dd4bf8f/cleanser_1.jpg?w=800&q=80" alt="" className="car-img abt-img-1" />
         </div>
         <div className="features">
           <div className="feature__1">
-            <p className="abt-content">Magical Beauty is a skincare line inspired by real skin - with the aim of making skincare easy and stress free. Explore all 20+ products for all needs and all budgets</p>
+            <p className="abt-content">SuperSkin is a skincare line inspired by real skin - with the aim of making skincare easy and stress free. Explore all 20+ products for all needs and all budgets</p>
             <br />
-            <p className="abt-content">We’re serious about ingredients. Our 200+ carefully selected brands are at the forefront of the clean beauty movement. No toxins. Only goodness.</p>
+            <p className="abt-content">We’re serious about ingredients. Our ingredients are carefully selected and we are at the forefront of the clean beauty movement. No toxins. Only goodness.</p>
             <br />
-            <p className="abt-content">We’re serious about ingredients. Our 200+ carefully selected brands are at the forefront of the clean beauty movement. No toxins. Only goodness.</p>
-            <br />
+            
           </div>
         </div>
-      </div>
-      <div id="productList"><p className="shopProductsHeading">Our products</p></div>
-      <div className="home__row">
-        {productsList}
       </div>
     </div>
   )

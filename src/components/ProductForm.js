@@ -25,7 +25,7 @@ function ProductForm(props) {
 
     return (
         <form onSubmit={submitHandler} className="form">
-            <label>Amount: </label>
+            <label><strong>Amount: </strong></label>
             <input
                 ref={amountInputRef}
                 type="number"
@@ -35,7 +35,7 @@ function ProductForm(props) {
                 defaultValue="1"
                 id= {'amount_' + props.id}                
             />
-            <button className="button">+ Add to cart</button>
+            <button className="button">+ ADD TO CART</button>
             {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
         </form>
     );

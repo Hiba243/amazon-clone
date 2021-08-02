@@ -38,6 +38,7 @@
   margin-bottom: 10px;
   background-color: white;
   width: 98%;
+  border: 1px solid black;
 }
 
 .login__container > p {

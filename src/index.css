@@ -43,6 +43,7 @@ a{
   color: white;
   outline: none;
   border: none;
+  font-family: "Object Sans";
 }
 .button:hover{
   background-color: white;

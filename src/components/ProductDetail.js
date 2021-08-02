@@ -35,7 +35,7 @@ function ProductDetail() {
               <p className="productDetailTitle"><strong>{item.title}</strong></p>
             </div>
             <div className="productDetail__info">
-              <p className="productDetail__price"><strong>${item.price}</strong></p>
+              <p className="productDetail__price"><strong>Price: </strong>${item.price}</p>
             </div>
             <div>
               <ProductForm id={item.id} onAddToCart={addToBasketHandler} />

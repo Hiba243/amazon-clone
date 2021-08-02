@@ -38,16 +38,25 @@
   margin: 5rem 0 3rem 0;
   text-align: center;
   font-size: 5rem;
+  font-family: "Object Sans Heavy";
+}
+.shopProductsSubHeading{
+  margin: 3rem 0 3rem 0;
+  text-align: center;
+  font-size: 1.5rem;
 }
 .about {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 3rem;
-  padding: 2rem 0 0 0;
+  padding: 1rem 0 1rem 0;
+  background-color: #c4293c;
+  margin-top: 6rem;
 }
 .abt-content {
-  font-size: 1rem;
+  font-size: 1.5rem;
+  color: white;
 }
 .abt-img {
   align-self: flex-end;
@@ -56,7 +65,7 @@
 .abt-img-1 {
   border-radius: 50%;
   padding: 1rem;
-  border: 1px solid #c4293c;
+  border: 5px solid white;
 }
 
 .sml-btn {

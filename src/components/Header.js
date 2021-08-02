@@ -111,7 +111,7 @@ function Header() {
           <span className="bar"></span>
           <span className="bar"></span>
         </div>
-       <Link to="/" className="logo">SUPER SKIN</Link>
+       <Link to="/" className="logo">SUPER<span className="logo-skin">SKIN</span></Link>
            
              <div className="flex-au">
                

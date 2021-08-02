@@ -90,6 +90,9 @@
   transform: translateX(-50%);
   z-index: 1;
 }
+.logo-skin{
+  font-family: "Object Sans Heavy";
+}
 .logo-text {
   font-size: 1.5rem;
 }
@@ -144,7 +147,7 @@
   padding: 4rem 0;
   flex-direction: column;
   background-color: #c4293c;
-  width: 40%;
+  width: 20%;
   height: 100vh;
   text-align: center;
   transition: 0.3s;
