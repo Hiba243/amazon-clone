@@ -1,3 +1,4 @@
+import './ProductForm.css'
 import { useRef, useState } from 'react';
 
 function ProductForm(props) {
@@ -23,7 +24,7 @@ function ProductForm(props) {
     };
 
     return (
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} className="form">
             <label>Amount: </label>
             <input
                 ref={amountInputRef}
@@ -34,7 +35,7 @@ function ProductForm(props) {
                 defaultValue="1"
                 id= {'amount_' + props.id}                
             />
-            <button>+ Add</button>
+            <button className="button">+ Add to cart</button>
             {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
         </form>
     );

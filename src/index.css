@@ -35,4 +35,17 @@ code {
 
 a{
   text-decoration: none;
+  color:#c4293c;
+}
+
+.button{
+  background-color: #c4293c;
+  color: white;
+  outline: none;
+  border: none;
+}
+.button:hover{
+  background-color: white;
+  color:#c4293c;
+  outline: 1px solid #c4293c;
 }

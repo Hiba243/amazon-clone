@@ -1,30 +1,9 @@
-import './Home.css'
-import Product from './Product'
-import useProducts from './use-products';
-import Image2 from '../img/Captured.JPG';
-import useImages from './use-images';
-import {Link} from 'react-router-dom'
-
-function Home() {
-  const products = useProducts();
-  const images = useImages();
-  
-  const productsList = products.map((meal) => <Product
-    key={meal.id}
-    id={meal.id}
-    title={meal.title}
-    price={meal.price}
-    image={meal.image}
-  />
-  );
-  console.log(images[0]);
-  const id= images[0] ? images[0].imgId : '';
-  return (
-    <div className="home">
-      <div >
-        <Link to={"/products/"+id}><img src={images[0] ? images[0].image : ''} className="home__container" alt="" /></Link>
-      </div>
-      <div className="about" id="about">
+import React from 'react'
+import './About.css'
+import { Link } from "react-router-dom";
+function About() {
+    return (
+        <div className="about aboutPage" id="about">
         <div className="abt-img">
           <img src="https://images.ctfassets.net/vnxry7jc7f2k/5Xra2xQwAg0moYjschl66s/c01263879933895ee760cebd1dd4bf8f/cleanser_1.jpg?w=800&q=80" alt="" className="car-img abt-img-1" />
         </div>
@@ -36,15 +15,11 @@ function Home() {
             <br />
             <p className="abt-content">We’re serious about ingredients. Our 200+ carefully selected brands are at the forefront of the clean beauty movement. No toxins. Only goodness.</p>
             <br />
+            <Link to="/allProducts"><button className="button sml-btn">Shop All</button></Link>
           </div>
         </div>
       </div>
-      <div id="productList"><p className="shopProductsHeading">Our products</p></div>
-      <div className="home__row">
-        {productsList}
-      </div>
-    </div>
-  )
+    )
 }
 
-export default Home
+export default About

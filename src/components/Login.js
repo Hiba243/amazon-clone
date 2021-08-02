@@ -19,39 +19,20 @@ function Login() {
       auth
           .signInWithEmailAndPassword(email, password)
           .then(auth => {
-              history.goBack();
-          })
-          .catch(error => alert(error.message))
-  }
-
-  const register = e => {
-      e.preventDefault();
-
-      auth
-          .createUserWithEmailAndPassword(email, password)
-          .then((auth) => {
-              // it successfully created a new user with email and password
-              if (auth) {
-                  setIsRegistered(true);
-              }
+              history.push("/");
           })
           .catch(error => alert(error.message))
   }
 
     return (
         <div className="login">
-            <Link to='/'>
-                <img
-                    className="login__logo"
-                    alt="login_logo"
-                    src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png'
-                />
+            <Link to='/' className="login__logo">
+            SUPER SKIN
             </Link>
 
             <div className='login__container'>
                 <h1>Sign-in</h1>
                 {isLoggingIn && <p>Logging in...</p>}
-                {isRegistered ? <p className="info-msg">Registered Successfully, proceed for sign in</p> : <p></p>}
                 <form>
                 <h5>E-mail</h5>
                     <input type='text' value={email} onChange={e => setEmail(e.target.value)} />
@@ -60,15 +41,9 @@ function Login() {
                     <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
 
 
-                    <button type='submit' onClick={signIn} className='login__signInButton'>Sign In</button>
+                    <button type='submit' onClick={signIn} className='button login__signInButton'>Sign In</button>
                 </form>
-
-                <p>
-                    By signing-in you agree to the AMAZON FAKE CLONE Conditions of Use & Sale. Please
-                    see our Privacy Notice, our Cookies Notice and our Interest-Based Ads Notice.
-                </p>
-
-                <button onClick={register} className='login__registerButton'>Create your Amazon Account</button>
+                <Link to="/register"><button className='button login__registerButton'>Sign Up</button></Link>
             </div>
         </div>
     )

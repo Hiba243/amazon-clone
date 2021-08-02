@@ -21,7 +21,6 @@ function Subtotal() {
    
     return (
         <div className="subtotal">
-            {user ? <Link to="/orders">Your order history</Link> : ''}
             <CurrencyFormat
                 renderText={(value) => (
                     <>
@@ -37,7 +36,8 @@ function Subtotal() {
                 thousandSeparator={true}
                 prefix={"$"}
             />
-            {basketLength>0 && <button onClick={goToCheckout}>Proceed to checkout</button>}
+            {basketLength>0 && <button className="button" onClick={goToCheckout}>Proceed to checkout</button>}
+            {user ? <Link to="/orders"><button className="button">Your order history</button></Link> : ''}
         </div>
     )
 }

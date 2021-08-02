@@ -1,0 +1,21 @@
+.productDetailFlex{
+    display: flex;
+    flex-direction: row;
+    gap:3rem;
+    justify-content: center;
+    
+}
+.productDetailImg{
+    width: 30%;
+}
+.productDetailsFlex{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+}
+.productDetailTitle{
+    font-family: 'Object Sans';
+    color:#c4293c;
+    font-size: 2rem;
+}

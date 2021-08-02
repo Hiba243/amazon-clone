@@ -1,10 +1,10 @@
-import './Product.css'
+import './ProductDetail.css'
 import ProductForm from './ProductForm';
 import { useParams } from "react-router-dom";
 import useProducts from './use-products';
 import { useStateValue } from "./StateProvider";
 function ProductDetail() {
-  const [{ basket,user }, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
   const params = useParams();
   const products = useProducts();
 
@@ -25,22 +25,24 @@ function ProductDetail() {
   };
 
   return (
-    <div className="home">
-      <div className="home__row">
-        {filteredList?.map(item => (
-          <div className="product" key={item.id}>
-            <div className="product__info">
-              <p><strong>{item.title}</strong></p>
-              <p className="product__price"><small>$</small><strong>{item.price}</strong></p>
+    <div className="productDetail">
+      {filteredList?.map(item => (
+        <div className="productDetailFlex" key={item.id}>
+          <img src={item.image} alt="product img" className="productDetailImg">
+          </img>
+          <div className="productDetailsFlex" key={item.id}>
+            <div className="productDetail__info">
+              <p className="productDetailTitle"><strong>{item.title}</strong></p>
             </div>
-            <img src={item.image} alt="product img">
-            </img>
+            <div className="productDetail__info">
+              <p className="productDetail__price"><strong>${item.price}</strong></p>
+            </div>
             <div>
               <ProductForm id={item.id} onAddToCart={addToBasketHandler} />
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   )
 }

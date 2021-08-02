@@ -82,24 +82,26 @@ function Header() {
       <nav className="navbar">
       <ul className="nav__menu" ref={refNavMenu}>
           <div className="link-flex">
-            <div className="star" id="star-1" ref={refStar1}></div>
+            
             <li className="nav__item">
-              <a href="#about" className="nav__link link-effect" onClick={closeMenu} 
-              >Face Wash</a
+              <Link to="/" className="nav__link link-effect" onClick={closeMenu} 
+              >Home</Link
               >
             </li>
           </div>
           <div className="link-flex">
-            <div className="star" id="star-2" ref={refStar2}></div>
+            
             <li className="nav__item">
-              <a href="#work" className="nav__link link-effect" onClick={closeMenu} >Serum</a>
+            <Link to="/allProducts" className="nav__link link-effect" onClick={closeMenu} 
+              >Products</Link
+              >
             </li>
           </div>
           <div className="link-flex">
-            <div className="star" id="star-3" ref={refStar3}></div>
+            
             <li className="nav__item">
-              <a href="#contact" className="nav__link link-effect" onClick={closeMenu} 
-              >Exfoliant</a
+            <Link to="/about" className="nav__link link-effect" onClick={closeMenu} 
+              >About</Link
               >
             </li>
           </div>
@@ -109,7 +111,7 @@ function Header() {
           <span className="bar"></span>
           <span className="bar"></span>
         </div>
-       <div className="logo">SUPER SKIN</div>
+       <Link to="/" className="logo">SUPER SKIN</Link>
            
              <div className="flex-au">
                
@@ -138,8 +140,8 @@ function Header() {
            <div className="header__nav" >
                  <Link to={!user ? '/login' : history.location.pathname}>
                      <div className="header__option" onClick={handleAuthenticaton}>
-                         <PersonOutlineOutlinedIcon/>
-                         
+                         {/* <PersonOutlineOutlinedIcon/> */}
+                         {user ? <p>SIGN OUT</p> : <p>SIGN IN</p>} 
                      </div>
                  </Link>
                  {/* <Link to='/orders'>
@@ -150,68 +152,15 @@ function Header() {
                  </Link> */}
                  <Link to="/checkout">
                      <div className="header__optionBasket">
-                         <ShoppingBasketOutlinedIcon/>
-                    
+                         {/* <ShoppingBasketOutlinedIcon/> */}
+                          <p>CART {basket.length>0 ? basket.length : ''}</p>
                      </div>
                  </Link>
              </div>
              </div>
       </nav>
     </header>
-        // <div className="header">
-            
-        //      <div className="header__search">
-        //         {/* <input className="header__searchInput" type="text"
-        //         onChange={(e) => {
-        //             setSearch(e.target.value.toLowerCase());
-        //           }}
-        //         ></input> */}
-        //         <Autocomplete
-        //             className="AutoComplete"
-        //             value={value}
-        //             onChange={(event, newValue) => {                     
-        //               setValue(newValue);
-        //               setSearch(newValue);
-        //             }}
-        //             inputValue={inputValue}
-        //             onInputChange={(event, newInputValue) => {
-        //             setInputValue(newInputValue);
-        //             }}
-        //             id="combo-box-demo"
-        //             options={list}                   
-        //             renderInput={(params) => <TextField {...params}/>}
-        //             style={{ width: "200px" }}
-        //         />
-                
-        //     </div>
-            
-        //     <Link to="/" className="logo">
-        //         <h1>SUPERFLUID</h1>
-        //     </Link>
-           
-        //     <div className="header__nav" >
-        //         <Link to={!user ? '/login' : history.location.pathname} className="no-underline">
-        //             <div className="header__option" onClick={handleAuthenticaton}>
-        //                 {/* <span className="header__optionLineOne">Hello {!user ? 'Guest' : user.email}</span> */}
-                        
-        //                 <span className="header__optionLineTwo">{user ? 'Sign Out' : 'Sign In'}</span>
-        //             </div>
-        //         </Link>
-        //         {/* <Link to='/orders'>
-        //         <div className="header__option">
-        //             <span className="header__optionLineOne">Returns</span>
-        //             <span className="header__optionLineTwo">& orders</span>
-        //         </div>
-        //         </Link> */}
-        //         <Link to="/checkout">
-        //             <div className="header__optionBasket">
-        //                 <ShoppingBasketIcon />
-        //                 <span className="header__optionLineTwo header__basketCount">{basket?.length}</span>
-        //             </div>
-        //         </Link>
-        //     </div>
-          
-        // </div>
+      
     )
 }
 

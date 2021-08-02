@@ -17,6 +17,9 @@ import { auth } from "./firebase";
 import Orders from './components/Orders'
 import CategoryBar from './components/CategoryBar'
 import FilteredByTag from './components/FilterByTag';
+import About from './components/About';
+import AllProducts from './components/AllProducts';
+import Footer from './components/Footer';
 
 const promise = loadStripe('pk_test_51JAszhSF3XO15ySUFDYqeN2mPoDY4cKb0VQ4xjWMNqdl3M3sWxXCcVx487splKGO4tZHyxRzsXwUM2kfpoT3WDkQ00hHsp5sYM');
 
@@ -66,32 +69,32 @@ function App() {
           </Route>
           <Route path="/checkout">
             <Header />
-
             <Checkout />
-          </Route>
-          <Route path="/filtered/:filterTag/:tag">
-            <Header />
-
-            <FilteredByTag />
           </Route>
           <Route path="/filtered/:filterTag">
             <Header />
-
             <FilteredProducts />
           </Route>
-
           <Route path="/products/:productId">
             <Header />
-
             <ProductDetail />
           </Route>
           {user && <Route path="/payment">
             <Header />
-
             <Elements stripe={promise}>
               <Payment />
             </Elements>
           </Route>}
+          <Route path="/about">
+            <Header/>
+            <About />
+            <Footer/>
+          </Route>
+          <Route path="/allProducts">
+            <Header/>
+            <AllProducts />
+            <Footer/>
+          </Route>
           <Route path="/login">
             <Login />
           </Route>
@@ -99,13 +102,14 @@ function App() {
             <Register />
           </Route>
           <Route exact path="/" >
-            <Header />
-          
+            <Header />         
             <Home />
+            <Footer/>
           </Route>
           <Route path="/" >
             <Header />
             <Home />
+            <Footer/>
           </Route>
         </Switch>
       </div>

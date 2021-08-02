@@ -55,7 +55,7 @@ const CategoryBar = () => {
                     <div className="link-flex">
                         <div className="subnav">
                             <Link to="/filtered/appliance" className="link-effect" onClick={closeMenu}>
-                                <button className="subnavbtn">Appliances</button>
+                                <button className="button subnavbtn">Appliances</button>
                             </Link>
                             <div className="subnav-content">
                                 <Link to="/filtered/appliance/kitchen">Kitchen</Link>
@@ -65,7 +65,7 @@ const CategoryBar = () => {
                     <div className="link-flex">
                         <div className="subnav">
                             <Link to="/filtered/book" className="link-effect" onClick={closeMenu}>
-                                <button className="subnavbtn">Books</button>
+                                <button className="button subnavbtn">Books</button>
                             </Link>
                             <div className="subnav-content">
                                 <Link to="/filtered/book/self-help">Self-help</Link>
@@ -75,7 +75,7 @@ const CategoryBar = () => {
                     <div className="link-flex">
                         <div className="subnav">
                             <Link to="/filtered/electronic" className="link-effect" onClick={closeMenu}>
-                                <button className="subnavbtn">Electronics</button>
+                                <button className="button subnavbtn">Electronics</button>
                             </Link>
                             <div className="subnav-content">
                                 <Link to="/filtered/electronic/tv">TV</Link>

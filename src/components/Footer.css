@@ -1,0 +1,19 @@
+.footer {
+    margin: 8rem 0 3rem 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .logo-footer{
+    align-self: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-family: "Object Sans Heavy Slanted";
+    color: #c4293c;
+    position: relative;
+    left: auto;
+    transform: none;
+  }
+  .footer-content{
+    align-self: center;
+    font-size: 1rem;
+  }

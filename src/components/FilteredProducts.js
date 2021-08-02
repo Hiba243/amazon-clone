@@ -11,7 +11,7 @@ function FilteredProducts() {
   filteredList = products.filter((product) => product.category.toLowerCase().includes(params.filterTag));
 
   return (
-    <div className="home">
+    <div className="filteredProducts">
       <div className="home__row">
         {filteredList?.map(item => (
           <Product

@@ -3,9 +3,11 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
 .checkoutProduct__info {
-    padding-left: 20px
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 .checkoutProduct__info > button {
@@ -19,7 +21,6 @@
 
 .checkoutProduct__image {
     object-fit: contain;
-    width: 180px;
     height: 180px;
   }
 
@@ -30,4 +31,8 @@
 .checkoutProduct__title {
     font-size: 17px;
     font-weight: 800;
+}
+.checkoutProduct__buttons{
+    display: flex;
+    gap: 1rem;
 }
