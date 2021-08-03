@@ -8,7 +8,9 @@
 .home__container {
   object-fit: contain;
   width: 100%;
-  margin-top: -5rem;
+}
+.home__imgcontainer{
+  padding: 0;
 }
 .home__row {
   display: flex;
@@ -50,7 +52,7 @@
   flex-direction: row;
   justify-content: center;
   gap: 3rem;
-  padding: 1rem 0 1rem 0;
+  padding: 2rem 0;
   background-color: #c4293c;
   margin-top: 6rem;
 }
@@ -71,17 +73,14 @@
 .sml-btn {
   width: 100%;
   font-family: "Object Sans";
-  background-color: #c4293c;
-  color: white;
   outline: none;
-  border: none;
   padding: 0.5rem;
   text-align: center;
   align-self: center;
   margin: 1rem 0 0 0;
 }
 .sml-btn:hover {
-  background-color: white;
-  color: #c4293c;
+  background-color: #c4293c;
+  color: white;
   outline: 1px solid #c4293c;
 }

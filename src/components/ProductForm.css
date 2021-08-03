@@ -1,4 +1,12 @@
 .form{
     display: flex;
+    gap:2rem;
+    flex-direction: column;
+}
+.form-input{
+    display: flex;
     gap:.5rem;
+}
+.form-btn{
+    padding: 1rem !important;
 }

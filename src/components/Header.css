@@ -144,7 +144,7 @@
   position: fixed;
   left: -100%;
   top: 0;
-  padding: 4rem 0;
+  padding: 6rem 0;
   flex-direction: column;
   background-color: #c4293c;
   width: 20%;
@@ -155,10 +155,13 @@
   list-style-type: none;
 }
 .nav__item {
-  margin: 2.5rem 0;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  font-family: "Object Sans Heavy";
+  text-transform: uppercase;
 }
 .nav__link {
-  color: white;
+  color: black;
   font-size: 1rem;
 }
 

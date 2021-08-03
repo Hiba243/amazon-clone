@@ -1,13 +1,13 @@
 import './ProductDetail.css'
 import ProductForm from './ProductForm';
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import useProducts from './use-products';
 import { useStateValue } from "./StateProvider";
 function ProductDetail() {
   const [{ basket, user }, dispatch] = useStateValue();
   const params = useParams();
   const products = useProducts();
-
+  const history=useHistory();
   let filteredList;
   filteredList = products.filter(item => item.id === params.productId);
 
@@ -19,9 +19,11 @@ function ProductDetail() {
         title: filteredList[0].title,
         image: filteredList[0].image,
         price: filteredList[0].price,
+        desc: filteredList[0].desc,
         amount: amount,
       },
     });
+    history.push("/checkout")
   };
 
   return (
@@ -34,8 +36,12 @@ function ProductDetail() {
             <div className="productDetail__info">
               <p className="productDetailTitle"><strong>{item.title}</strong></p>
             </div>
+            <div>
+            <p className="productDetail__price"><strong>DESCRIPTION: </strong>{item.desc}</p>
+            </div>
             <div className="productDetail__info">
-              <p className="productDetail__price"><strong>Price: </strong>${item.price}</p>
+            
+              <p className="productDetail__price"><strong>PRICE: </strong>${item.price}</p>
             </div>
             <div>
               <ProductForm id={item.id} onAddToCart={addToBasketHandler} />

@@ -9,24 +9,25 @@ function Home() {
   const products = useProducts();
   const images = useImages();
   
-  const productsList = products.map((meal) => <Product
-    key={meal.id}
-    id={meal.id}
-    title={meal.title}
-    price={meal.price}
-    image={meal.image}
+  const productsList = products.map((prdct) => <Product
+    key={prdct.id}
+    id={prdct.id}
+    title={prdct.title}
+    price={prdct.price}
+    image={prdct.image}
+    desc={prdct.desc}
   />
   );
   console.log(images[0]);
   const id= images[0] ? images[0].imgId : '';
   return (
     <div className="home">
-      <div >
+      <div>
         <Link to={"/products/"+id}><img src={images[0] ? images[0].image : ''} className="home__container" alt="" /></Link>
       </div>
-      <div id="productList"><p className="shopProductsHeading">OUR PRODUCTS</p>
-      <p className="shopProductsSubHeading">We created Superfluid with the aim of making skincare easy and stress free, fun and bold. And we forgot - all of our products are also vegan and cruelty free.</p></div>
-      <div className="home__row">
+      <div id="productList"><p className="shopProductsHeading section-padding">OUR PRODUCTS</p>
+      <p className="shopProductsSubHeading section-padding">We created Superfluid with the aim of making skincare easy and stress free, fun and bold. And we forgot - all of our products are also vegan and cruelty free.</p></div>
+      <div className="home__row section-padding">
         {productsList}
       </div>
       <div className="about" id="about">

@@ -1,11 +1,13 @@
 import './Product.css'
 import ProductForm from './ProductForm';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
 
-function Product({ id, title, image, price }) {
+function Product({ id, title, image, price, desc }) {
+    const history = useHistory();
     const [{ basket }, dispatch] = useStateValue();
-    const addToBasketHandler = (amount) => {
+    const addToBasketHandler = () => {
+
         dispatch({
             type: "ADD_TO_BASKET",
             item: {
@@ -13,29 +15,39 @@ function Product({ id, title, image, price }) {
                 title: title,
                 image: image,
                 price: price,
-                amount: amount,
+                desc: desc,
+                amount: 1,
             },
         });
+        history.push("/checkout")
     };
 
     return (
-        <Link to={"/products/" + id}>
-            <div className="product">
-                <img src={image} alt="product img">
-                </img>
-                <div className="desc">
-                    <div className="product__info">
+
+        <div className="product">
+            <Link to={"/products/" + id}>
+            <div className="product productImg">
+            <img src={image} alt="product img">
+            </img>
+            </div>
+            </Link>
+            <div className="desc">
+                <div className="product__info">
+                    <Link to={"/products/" + id}><p className="product_name"><strong>{title}</strong></p></Link>
+                    <Link to={"/products/" + id}>
                         <div className="product__info-price-desc">
-                            <p className="product_name">{title}</p>
+                            <p>{desc}</p>
                             <p className="product__price" style={{ color: '#c4293c' }}>${price}</p>
                         </div>
-                    </div>
+                    </Link>
+                    <button className="button prdct-btn" onClick={addToBasketHandler}>Add to cart</button>
                 </div>
-                {/* <div>
+            </div>
+            {/* <div>
                 <ProductForm id={id} onAddToCart={addToBasketHandler}/>
             </div> */}
-            </div>
-        </Link>
+        </div>
+
     )
 }
 

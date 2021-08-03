@@ -86,29 +86,11 @@ function Payment() {
         <div className='payment'>
             <div className='payment__container'>
                 <h1>
-                    Checkout (
-                        <Link to="/checkout">{basket?.length} items</Link>
-                        )
+                    Checkout
                 </h1>
-
-
-                {/* Payment section - delivery address */}
-                <div className='payment__section'>
-                    <div className='payment__title'>
-                        <h3>Delivery Address</h3>
-                    </div>
-                    <div className='payment__address'>
-                        <p>{user?.email}</p>
-                        <p>123 React Lane</p>
-                        <p>Los Angeles, CA</p>
-                    </div>
-                </div>
-
+                <div className="payment__flex">
                 {/* Payment section - Review Items */}
                 <div className='payment__section'>
-                    <div className='payment__title'>
-                        <h3>Review items and delivery</h3>
-                    </div>
                     <div className='payment__items'>
                         {basket.map(item => (
                             <CheckoutProduct
@@ -118,6 +100,7 @@ function Payment() {
                                 image={item.image}
                                 price={item.price}
                                 amount={item.amount}
+                                desc={item.desc}
                                 
                             />
                         ))}
@@ -126,10 +109,7 @@ function Payment() {
             
 
                 {/* Payment section - Payment method */}
-                <div className='payment__section'>
-                    <div className="payment__title">
-                        <h3>Payment Method</h3>
-                    </div>
+                <div className='payment__section pmt-width'>
                     <div className="payment__details">
                             {/* Stripe magic will go */}
 
@@ -148,7 +128,7 @@ function Payment() {
                                         prefix={"$"}
                                     />
                                     <button disabled={processing || disabled || succeeded} className="button">
-                                        <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
+                                        <span>{processing ? <p>Processing</p> : "make purchase"}</span>
                                     </button>
                                 </div>
 
@@ -156,6 +136,7 @@ function Payment() {
                                 {error && <div>{error}</div>}
                             </form>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

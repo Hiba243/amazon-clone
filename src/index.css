@@ -9,9 +9,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  padding: 0 2rem;
+  
 }
 
+.section-padding{
+  padding: 0 2rem;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -39,14 +42,15 @@ a{
 }
 
 .button{
-  background-color: #c4293c;
-  color: white;
   outline: none;
   border: none;
   font-family: "Object Sans";
+  text-transform: uppercase;
+  background-color: transparent;
+  color:#c4293c;
+  border: 1px solid #c4293c;
 }
 .button:hover{
-  background-color: white;
-  color:#c4293c;
-  outline: 1px solid #c4293c;
+  background-color: #c4293c;
+  color:white;
 }

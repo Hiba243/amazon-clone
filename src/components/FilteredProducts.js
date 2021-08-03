@@ -11,7 +11,8 @@ function FilteredProducts() {
   filteredList = products.filter((product) => product.category.toLowerCase().includes(params.filterTag));
 
   return (
-    <div className="filteredProducts">
+    <div className="filteredProducts section-padding">
+      <div className="filteredProducts__heading">Search results for "{params.filterTag}"</div>
       <div className="home__row">
         {filteredList?.map(item => (
           <Product
@@ -22,6 +23,7 @@ function FilteredProducts() {
             price={item.price}
             rating={item.rating}
             amount={item.amount}
+            desc={item.desc}
           />
         ))}
       </div>

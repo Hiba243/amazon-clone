@@ -19,6 +19,7 @@ const useProducts = () => {
                         image: responseData[key].image,
                         tags: responseData[key].tags,
                         category: responseData[key].category,
+                        desc: responseData[key].desc,
                     });
                 }
                 sessionStorage.setItem('product-list', JSON.stringify(loadedproducts));

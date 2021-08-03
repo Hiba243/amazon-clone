@@ -78,7 +78,7 @@ function Header() {
     }
     
     return (
-        <header>
+        <header className="section-padding">
       <nav className="navbar">
       <ul className="nav__menu" ref={refNavMenu}>
           <div className="link-flex">
@@ -153,7 +153,7 @@ function Header() {
                  <Link to="/checkout">
                      <div className="header__optionBasket">
                          {/* <ShoppingBasketOutlinedIcon/> */}
-                          <p>CART {basket.length>0 ? basket.length : ''}</p>
+                          <p>CART {basket.length> 0 ? `[ ${basket.length} ]` : ''}</p>
                      </div>
                  </Link>
              </div>

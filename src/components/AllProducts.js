@@ -6,22 +6,20 @@ import './AllProducts.css'
 function AllProducts() {
     const products = useProducts();
 
-  const productsList = products.map((meal) => <Product
-    key={meal.id}
-    id={meal.id}
-    title={meal.title}
-    price={meal.price}
-    image={meal.image}
+  const productsList = products.map((prdct) => <Product
+    key={prdct.id}
+    id={prdct.id}
+    title={prdct.title}
+    price={prdct.price}
+    image={prdct.image}
+    desc={prdct.desc}
   />
   );
     return (
-        <div className="allProducts">
-        <div id="productList"><p className="shopProductsHeading">Shop all products</p></div>
+        <div className="section-padding allProducts">
+        <div id="productList"><p className="shopProductsHeading allProductsPageHeading">OUR PRODUCTS</p></div>
         <div className="home__row">
           {productsList}
-          {productsList[0]}
-          {productsList[1]}
-          {productsList[2]}
         </div>
         </div>
     )

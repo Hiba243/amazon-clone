@@ -1,6 +1,5 @@
 .checkoutProduct {
     display: flex;
-    margin-top: 20px;
     margin-bottom: 20px;
 }
 .checkoutProduct__info {
@@ -22,6 +21,8 @@
 .checkoutProduct__image {
     object-fit: contain;
     height: 180px;
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
   }
 
 .checkoutProduct__rating {
@@ -34,5 +35,9 @@
 }
 .checkoutProduct__buttons{
     display: flex;
-    gap: 1rem;
+    gap: .5rem;
+}
+.amount{
+    display: flex;
+    gap:  1rem;
 }

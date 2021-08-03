@@ -9,11 +9,12 @@
     text-decoration: none;
     font-family: "Object Sans Heavy Slanted";
     color: #c4293c;
-    position: relative;
+    position: relative !important;
     left: auto;
     transform: none;
   }
   .footer-content{
     align-self: center;
-    font-size: 1rem;
+    font-size: 1.25rem;
+    color:#c4293c;
   }

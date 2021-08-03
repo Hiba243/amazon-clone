@@ -6,7 +6,7 @@ import { useStateValue } from "./StateProvider";
 function Checkout() {
     const [{basket}] = useStateValue();
     return (
-        <div className="checkout">
+        <div className="checkout section-padding">
            <div className="checkout__left">
                 <div>
                     <h2 className="checkout__title">Your shopping basket</h2>
@@ -19,6 +19,7 @@ function Checkout() {
                         price={item.price}
                         rating={item.rating}
                         amount={item.amount}
+                        desc={item.desc}
                         hidebutton={false}
                         />
                     ))}
