@@ -26,7 +26,7 @@ function ProductForm(props) {
     return (
         <form onSubmit={submitHandler} className="form">
             <div class="form-input">
-            <label><strong>AMOUNT: </strong></label>
+            <label><strong>Amount: </strong></label>
             <input
                 ref={amountInputRef}
                 type="number"

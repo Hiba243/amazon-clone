@@ -13,3 +13,16 @@
 .checkout__right{
   padding: 2rem 0;
 }
+@media only screen and (max-width: 1200px){
+  .checkout__title{
+    font-size: 1.5rem;
+  }
+  .checkout{
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 768px){
+  .checkout__title{
+    font-size: 1rem;
+  }
+}

@@ -14,3 +14,8 @@
 .order__id{
     margin-bottom: 2rem;
 }
+@media only screen and (max-width: 1200px){
+    .order{
+        padding: .5rem;
+    }
+}

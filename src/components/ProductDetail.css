@@ -21,3 +21,22 @@
     color:#c4293c;
     font-size: 2rem;
 }
+@media only screen and (max-width: 1200px){
+    .productDetailFlex{
+        flex-direction: column;
+    }
+    .productDetail{
+        padding: 1rem;
+    }
+    .productDetailImg{
+        width: auto;
+    }
+    .productDetailTitle, .productDetail__price{
+        font-size: 1.5rem;
+    }
+}
+@media only screen and (max-width: 768px){
+    .productDetailTitle,.productDetail__price{
+        font-size: 1rem;
+    }
+}

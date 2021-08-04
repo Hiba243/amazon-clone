@@ -221,3 +221,33 @@
 .active {
   display: block;
 }
+
+
+@media only screen and (max-width: 1200px){
+  .header__search{
+   display: none;
+  }
+  .nav__menu{
+    width: 50%;
+  }
+  .header__option > p,.header__optionBasket > p{
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 1200px){
+  .logo{
+    position: relative;
+    left: auto;
+    transform: none;
+    font-size: 1rem;
+  }
+  
+}
+@media only screen and (max-width: 768px){
+  .logo{
+    font-size: .8rem;
+  }
+  .header__option > p, .header__optionBasket > p{
+    font-size: .8rem;
+  }
+}

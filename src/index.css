@@ -40,7 +40,13 @@ a{
   text-decoration: none;
   color:#c4293c;
 }
-
+a:hover{
+  color: black;
+}
+::selection {
+  background-color: black;
+  color: #c4293c;
+}
 .button{
   outline: none;
   border: none;
@@ -53,4 +59,10 @@ a{
 .button:hover{
   background-color: #c4293c;
   color:white;
+  border: none;
+}
+@media only screen and (max-width: 1200px){
+  .section-padding{
+    padding: 0 .5rem;
+  }
 }
