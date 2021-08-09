@@ -1,68 +1,73 @@
-*{
+* {
   margin: 0;
 }
 body {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   margin: 0;
-  font-family: 'Object Sans', sans-serif;
+  font-family: "Object Sans", sans-serif;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  
 }
 
-.section-padding{
+.section-padding {
   padding: 0 2rem;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 @font-face {
-  font-family: 'Object Sans Heavy';
-  src: local('Object Sans Heavy'), url(./fonts/ObjectSans-Heavy.otf) format('truetype');
+  font-family: "Object Sans Heavy";
+  src: local("Object Sans Heavy"),
+    url(./fonts/ObjectSans-Heavy.otf) format("truetype");
 }
 @font-face {
-  font-family: 'Object Sans';
-  src: local('Object Sans'), url(./fonts/ObjectSans-Regular.otf) format('truetype');
+  font-family: "Object Sans";
+  src: local("Object Sans"),
+    url(./fonts/ObjectSans-Regular.otf) format("truetype");
 }
 @font-face {
-  font-family: 'Object Sans Heavy Slanted';
-  src: local('Object Sans Heavy Slanted'), url(./fonts/ObjectSans-HeavySlanted.otf) format('truetype');
+  font-family: "Object Sans Heavy Slanted";
+  src: local("Object Sans Heavy Slanted"),
+    url(./fonts/ObjectSans-HeavySlanted.otf) format("truetype");
 }
 @font-face {
-  font-family: 'Object Sans Slanted';
-  src: local('Object Sans Slanted'), url(./fonts/ObjectSans-Slanted.otf) format('truetype');
+  font-family: "Object Sans Slanted";
+  src: local("Object Sans Slanted"),
+    url(./fonts/ObjectSans-Slanted.otf) format("truetype");
 }
 
-a{
+a {
   text-decoration: none;
-  color:#c4293c;
+  color: #c4293c;
 }
-a:hover{
+a:hover {
   color: black;
 }
 ::selection {
   background-color: black;
   color: #c4293c;
 }
-.button{
+.button {
   outline: none;
   border: none;
   font-family: "Object Sans";
   text-transform: uppercase;
   background-color: transparent;
-  color:#c4293c;
+  color: #c4293c;
   border: 1px solid #c4293c;
 }
-.button:hover{
+.button:hover {
   background-color: #c4293c;
-  color:white;
+  color: white;
   border: none;
+  outline: none;
+  border: 1px solid #c4293c;
 }
-@media only screen and (max-width: 1200px){
-  .section-padding{
-    padding: 0 .5rem;
+@media only screen and (max-width: 1200px) {
+  .section-padding {
+    padding: 0 0.5rem;
   }
 }

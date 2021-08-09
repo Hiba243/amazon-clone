@@ -1,40 +1,33 @@
 import './Login.css'
-import { Link , useHistory} from "react-router-dom";
-import  {useState} from 'react'
+import { Link, useHistory } from "react-router-dom";
+import { useState } from 'react'
 import { auth } from "../firebase";
 
 function Login() {
-   
-
     const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isLoggingIn, setIsLoggingIn] = useState(false);
-    const [isRegistered, setIsRegistered] = useState(false);
-
-    
     const signIn = e => {
-      e.preventDefault();
+        e.preventDefault();
 
-      auth
-          .signInWithEmailAndPassword(email, password)
-          .then(auth => {
-              history.push("/");
-          })
-          .catch(error => alert(error.message))
-  }
+        auth
+            .signInWithEmailAndPassword(email, password)
+            .then(auth => {
+                history.push("/");
+            })
+            .catch(error => alert(error.message))
+    }
 
     return (
         <div className="login">
             <Link to='/' className="login__logo">
-            SUPER SKIN
+                SUPER SKIN
             </Link>
 
             <div className='login__container'>
                 <h1>Sign-in</h1>
-                {isLoggingIn && <p>Logging in...</p>}
                 <form>
-                <h5>E-mail</h5>
+                    <h5>E-mail</h5>
                     <input type='text' value={email} onChange={e => setEmail(e.target.value)} />
 
                     <h5>Password</h5>

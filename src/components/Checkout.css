@@ -4,25 +4,25 @@
   height: max-content;
   justify-content: space-between;
 }
-.checkout__title{
+.checkout__title {
   text-transform: uppercase;
   font-family: "Object Sans Heavy";
   font-size: 3rem;
   padding: 2rem 0;
 }
-.checkout__right{
+.checkout__right {
   padding: 2rem 0;
 }
-@media only screen and (max-width: 1200px){
-  .checkout__title{
+@media only screen and (max-width: 1200px) {
+  .checkout__title {
     font-size: 1.5rem;
   }
-  .checkout{
+  .checkout {
     flex-direction: column;
   }
 }
-@media only screen and (max-width: 768px){
-  .checkout__title{
+@media only screen and (max-width: 768px) {
+  .checkout__title {
     font-size: 1rem;
   }
 }

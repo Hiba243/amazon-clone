@@ -1,17 +1,12 @@
 import './Header.css'
-import {useState,useRef} from 'react'
-import SearchIcon from '@material-ui/icons/Search'
-import ShoppingBasketOutlinedIcon from '@material-ui/icons/ShoppingBasketOutlined';
+import { useState, useRef } from 'react'
 import { Link, useHistory } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import useProducts from './use-products';
 import { useStateValue } from "./StateProvider";
 import { auth } from "../firebase";
-import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import { makeStyles } from "@material-ui/core/styles";
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 const useStyles = makeStyles({
   paper: {
@@ -20,13 +15,9 @@ const useStyles = makeStyles({
 });
 
 function Header() {
-    const classes = useStyles();
-    const refHamburger = useRef();
+  const classes = useStyles();
+  const refHamburger = useRef();
   const refNavMenu = useRef();
-  const refStar1 = useRef();
-  const refStar2 = useRef();
-  const refStar3 = useRef();
-  const refSearchIcon = useRef();
   const refSearchBar = useRef();
 
   function mobileMenu() {
@@ -44,7 +35,7 @@ function Header() {
       bodyelem[0].style.overflow = 'visible';
     }
   }
-  
+
 
   function closeMenu() {
     const hamburger = refHamburger.current;
@@ -55,52 +46,52 @@ function Header() {
     bodyelem[0].style.position = 'relative';
     bodyelem[0].style.overflow = 'visible';
   }
-  
-    const history = useHistory();
-    const [{ basket,user }, dispatch] = useStateValue();
-    let list= useProducts();
-    list = [
-        ...new Set(
-          list.map((product) => { return product.category; })
-        ),
-      ];
-    const [value, setValue] = useState(list[0]);
-    const [inputValue, setInputValue] = useState('');
-    const handleAuthenticaton = () => {
-        auth.signOut();
+
+  const history = useHistory();
+  const [{ basket, user }, dispatch] = useStateValue();
+  let list = useProducts();
+  list = [
+    ...new Set(
+      list.map((product) => { return product.category; })
+    ),
+  ];
+  const [value, setValue] = useState(list[0]);
+  const [inputValue, setInputValue] = useState('');
+  const handleAuthenticaton = () => {
+    auth.signOut();
+  }
+
+  const setSearch = (e) => {
+    if (e) {
+      let url = "/filtered/" + e;
+      history.push(url);
     }
-    
-    const setSearch = (e) => {
-        if(e){
-        let url="/filtered/" + e;
-        history.push(url);
-        }
-    }
-    
-    return (
-        <header className="section-padding">
+  }
+
+  return (
+    <header className="section-padding">
       <nav className="navbar">
-      <ul className="nav__menu" ref={refNavMenu}>
+        <ul className="nav__menu" ref={refNavMenu}>
           <div className="link-flex">
-            
+
             <li className="nav__item">
-              <Link to="/" className="nav__link link-effect" onClick={closeMenu} 
+              <Link to="/" className="nav__link link-effect" onClick={closeMenu}
               >Home</Link
               >
             </li>
           </div>
           <div className="link-flex">
-            
+
             <li className="nav__item">
-            <Link to="/allProducts" className="nav__link link-effect" onClick={closeMenu} 
+              <Link to="/allProducts" className="nav__link link-effect" onClick={closeMenu}
               >Products</Link
               >
             </li>
           </div>
           <div className="link-flex">
-            
+
             <li className="nav__item">
-            <Link to="/about" className="nav__link link-effect" onClick={closeMenu} 
+              <Link to="/about" className="nav__link link-effect" onClick={closeMenu}
               >About</Link
               >
             </li>
@@ -111,57 +102,49 @@ function Header() {
           <span className="bar"></span>
           <span className="bar"></span>
         </div>
-       <Link to="/" className="logo">SUPER<span className="logo-skin">SKIN</span></Link>
-           
-             <div className="flex-au">
-               
-             <div className="header__search">
-               
-                 <Autocomplete
-                     className="AutoComplete"
-                   value={value}
-                   onChange={(event, newValue) => {                     
-                     setValue(newValue);
-                     setSearch(newValue);
-                   }}
-                   inputValue={inputValue}
-                   onInputChange={(event, newInputValue) => {
-                   setInputValue(newInputValue);
-                   }}
-                   id="combo-box-demo"
-                   classes={{ paper: classes.paper }}
-                   options={list}                   
-                   renderInput={(params) => <TextField {...params}/>}
-                   style={{ width: "200px" , fontFamily: 'Object Sans'}}
-                   ref={refSearchBar}
-               />
-              
-           </div> 
-           <div className="header__nav" >
-                 <Link to={!user ? '/login' : history.location.pathname}>
-                     <div className="header__option" onClick={handleAuthenticaton}>
-                         {/* <PersonOutlineOutlinedIcon/> */}
-                         {user ? <p>SIGN OUT</p> : <p>SIGN IN</p>} 
-                     </div>
-                 </Link>
-                 {/* <Link to='/orders'>
-                 <div className="header__option">
-                     <span className="header__optionLineOne">Returns</span>
-                     <span className="header__optionLineTwo">& orders</span>
-                 </div>
-                 </Link> */}
-                 <Link to="/checkout">
-                     <div className="header__optionBasket">
-                         {/* <ShoppingBasketOutlinedIcon/> */}
-                          <p>CART {basket.length> 0 ? `[ ${basket.length} ]` : ''}</p>
-                     </div>
-                 </Link>
-             </div>
-             </div>
+        <Link to="/" className="logo">SUPER<span className="logo-skin">SKIN</span></Link>
+
+        <div className="flex-au">
+
+          <div className="header__search">
+
+            <Autocomplete
+              className="AutoComplete"
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+                setSearch(newValue);
+              }}
+              inputValue={inputValue}
+              onInputChange={(event, newInputValue) => {
+                setInputValue(newInputValue);
+              }}
+              id="combo-box-demo"
+              classes={{ paper: classes.paper }}
+              options={list}
+              renderInput={(params) => <TextField {...params} />}
+              style={{ width: "200px", fontFamily: 'Object Sans' }}
+              ref={refSearchBar}
+            />
+
+          </div>
+          <div className="header__nav" >
+            <Link to={!user ? '/login' : history.location.pathname}>
+              <div className="header__option" onClick={handleAuthenticaton}>
+                {user ? <p>SIGN OUT</p> : <p>SIGN IN</p>}
+              </div>
+            </Link>
+            <Link to="/checkout">
+              <div className="header__optionBasket">
+                <p>CART {basket.length > 0 ? `[ ${basket.length} ]` : ''}</p>
+              </div>
+            </Link>
+          </div>
+        </div>
       </nav>
     </header>
-      
-    )
+
+  )
 }
 
 export default Header

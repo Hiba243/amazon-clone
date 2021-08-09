@@ -1,11 +1,8 @@
 import './Product.css'
-import ProductForm from './ProductForm';
 import { Link, useHistory } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
 import React, { useRef, useEffect } from 'react';
 import CSSRulePlugin from "gsap/CSSRulePlugin";
-import gsap from 'gsap';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TimelineLite, Power2 } from "gsap";
 import useOnScreen from './useOnScreen';
 
@@ -40,7 +37,7 @@ function Product({ id, title, image, price, desc }) {
             tl.to(container, 0, { css: { visibility: "visible" } });
             tl.to(imageReveal, 1, { width: "0%", ease: Power2.easeInOut });
         }
-    },[isVisible]);
+    }, [isVisible]);
 
     return (
 
@@ -50,14 +47,11 @@ function Product({ id, title, image, price, desc }) {
                     <div className="container" ref={el => (container = el)}>
                         <>
                             <div className="img-container" ref={img}>
-                                <img src={image} ref={el => { image1 = el; }} />
+                                <img src={image} ref={el => { image1 = el; }} alt="product" />
                             </div>
                         </>
                     </div>
                 </section>
-                {/* <div className="product productImg">
-                    <img src={image} alt="product img"></img>
-                </div> */}
             </Link>
             <div className="desc">
                 <div className="product__info">
@@ -71,9 +65,6 @@ function Product({ id, title, image, price, desc }) {
                     <button className="button prdct-btn" onClick={addToBasketHandler}>Add to cart</button>
                 </div>
             </div>
-            {/* <div>
-                <ProductForm id={id} onAddToCart={addToBasketHandler}/>
-            </div> */}
         </div>
 
     )

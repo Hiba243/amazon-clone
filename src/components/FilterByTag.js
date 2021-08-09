@@ -6,7 +6,6 @@ import useProducts from './use-products';
 function FilteredByTag() {
   const params = useParams();
   const products = useProducts();
-  console.log(params);
   let filteredList;
   filteredList = products.filter((product) => product.tags.toLowerCase().includes(params.tag));
 

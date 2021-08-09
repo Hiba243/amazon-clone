@@ -13,7 +13,7 @@ function Order({ order }) {
             </p>
             {order.data.basket?.map(item => (
                 <CheckoutProduct
-                
+
                     key={item.id}
                     id={item.id}
                     title={item.title}
@@ -32,7 +32,7 @@ function Order({ order }) {
                 displayType={"text"}
                 thousandSeparator={true}
                 prefix={"$"}
-            />   
+            />
         </div>
     )
 }

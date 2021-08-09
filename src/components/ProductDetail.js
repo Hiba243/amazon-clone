@@ -7,7 +7,7 @@ function ProductDetail() {
   const [{ basket, user }, dispatch] = useStateValue();
   const params = useParams();
   const products = useProducts();
-  const history=useHistory();
+  const history = useHistory();
   let filteredList;
   filteredList = products.filter(item => item.id === params.productId);
 
@@ -37,10 +37,10 @@ function ProductDetail() {
               <p className="productDetailTitle"><strong>{item.title}</strong></p>
             </div>
             <div>
-            <p className="productDetail__price"><strong>Description: </strong>{item.desc}</p>
+              <p className="productDetail__price"><strong>Description: </strong>{item.desc}</p>
             </div>
             <div className="productDetail__info">
-            
+
               <p className="productDetail__price"><strong>Price: </strong>${item.price}</p>
             </div>
             <div>

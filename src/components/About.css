@@ -1,12 +1,12 @@
-.aboutPage{
-    padding-top: 0;
-    padding-bottom: 1rem;
-    background-color: white;
-    margin-top: 1.5rem;
+.aboutPage {
+  padding-top: 0;
+  padding-bottom: 1rem;
+  background-color: white;
+  margin-top: 1.5rem;
 }
-.abtPageContent{
-    color:black;
+.abtPageContent {
+  color: black;
 }
-.abtPageImg{
-    border: 5px solid #c4293c;
+.abtPageImg {
+  border: 5px solid #c4293c;
 }

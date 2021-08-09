@@ -1,12 +1,12 @@
-.form{
-    display: flex;
-    gap:2rem;
-    flex-direction: column;
+.form {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
 }
-.form-input{
-    display: flex;
-    gap:.5rem;
+.form-input {
+  display: flex;
+  gap: 0.5rem;
 }
-.form-btn{
-    padding: 1rem !important;
+.form-btn {
+  padding: 1rem !important;
 }

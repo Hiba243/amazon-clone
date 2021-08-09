@@ -4,11 +4,11 @@ export const initialState = {
 };
 
 // Selector
-export const getBasketTotal = (basket) => 
+export const getBasketTotal = (basket) =>
   basket?.reduce((amount, item) => (item.price * item.amount) + amount, 0);
 
-  const reducer = (state, action) => {
- 
+const reducer = (state, action) => {
+
   switch (action.type) {
     case "ADD_TO_BASKET":
       const existingCartItemIndex = state.basket.findIndex(
@@ -16,7 +16,7 @@ export const getBasketTotal = (basket) =>
       );
       const existingCartItem = state.basket[existingCartItemIndex];
       let updatedItems;
-  
+
       if (existingCartItem) {
         const updatedItem = {
           ...existingCartItem,
@@ -31,7 +31,7 @@ export const getBasketTotal = (basket) =>
         ...state,
         basket: updatedItems,
       };
-    
+
     case 'EMPTY_BASKET':
       return {
         ...state,
@@ -51,12 +51,12 @@ export const getBasketTotal = (basket) =>
         updatedItemsForRemove = [...state.basket];
         updatedItemsForRemove[existingCartItemIndexForRemove] = updatedItem;
       }
-  
+
       return {
         ...state,
         basket: updatedItemsForRemove,
       };
-    
+
     case "SET_USER":
       return {
         ...state,

@@ -9,7 +9,7 @@
   object-fit: contain;
   width: 100%;
 }
-.home__imgcontainer{
+.home__imgcontainer {
   padding: 0;
 }
 .home__row {
@@ -31,18 +31,18 @@
   display: flex;
   flex-direction: column;
 }
-.car-img{
+.car-img {
   max-height: 500px;
   object-fit: contain;
   border-radius: 10%;
 }
-.shopProductsHeading{
+.shopProductsHeading {
   margin: 5rem 0 3rem 0;
   text-align: center;
   font-size: 5rem;
   font-family: "Object Sans Heavy";
 }
-.shopProductsSubHeading{
+.shopProductsSubHeading {
   margin: 3rem 0 3rem 0;
   text-align: center;
   font-size: 1.5rem;
@@ -82,24 +82,21 @@
 .sml-btn:hover {
   background-color: #c4293c;
   color: white;
-  outline: 1px solid #c4293c;
 }
 
 .mainHome .containerHome {
   margin: 0 auto;
-  
+
   display: flex;
   align-items: center;
   visibility: hidden;
- 
 }
 .img-containerHome {
-  
   position: relative;
   overflow: hidden;
- width: 100%; 
+  width: 100%;
 }
-.img-containerHome:after{
+.img-containerHome:after {
   position: absolute;
   content: "";
   width: 100%;
@@ -108,14 +105,14 @@
   top: 0;
   right: 0;
 }
-.img-containerHome >  img{
+.img-containerHome > img {
   margin: 0 auto;
   width: 100%;
 }
 
 .mainAbout .containerAbout {
   margin: 0 auto;
-  
+
   display: flex;
   align-items: center;
   visibility: hidden;
@@ -124,14 +121,13 @@
   background-color: #c4293c;
 }
 .img-containerAbout {
-  
   position: relative;
   overflow: hidden;
- width: 100%; 
- max-height: 500px;
- border-radius: 50%;
+  width: 100%;
+  max-height: 500px;
+  border-radius: 50%;
 }
-.img-containerAbout:after{
+.img-containerAbout:after {
   position: absolute;
   content: "";
   width: 100%;
@@ -142,37 +138,38 @@
   max-height: 500px;
   border-radius: 50%;
 }
-.img-containerAbout >  img{
+.img-containerAbout > img {
   margin: 0 auto;
   width: 100%;
   max-height: 500px;
   border-radius: 50%;
 }
 
-
-
-@media only screen and (max-width: 1200px){
-  .shopProductsHeading, .shopProductsSubHeading, .abt-content{
+@media only screen and (max-width: 1200px) {
+  .shopProductsHeading,
+  .shopProductsSubHeading,
+  .abt-content {
     font-size: 1.5rem;
   }
-  .abt-img{
+  .abt-img {
     display: none;
-    
   }
-  .about{
+  .about {
     padding: 1rem;
     margin-top: 1rem;
   }
-  .features{
+  .features {
     width: 100%;
     font-size: 1.5rem;
   }
 }
-@media only screen and (max-width: 768px){
-  .features{
+@media only screen and (max-width: 768px) {
+  .features {
     font-size: 1rem;
   }
-  .shopProductsHeading, .shopProductsSubHeading, .abt-content{
+  .shopProductsHeading,
+  .shopProductsSubHeading,
+  .abt-content {
     font-size: 1rem;
   }
 }

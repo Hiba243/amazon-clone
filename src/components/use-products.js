@@ -1,4 +1,4 @@
-import { useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 
 const useProducts = () => {
     const [products, setproducts] = useState([]);
@@ -23,11 +23,11 @@ const useProducts = () => {
                     });
                 }
                 sessionStorage.setItem('product-list', JSON.stringify(loadedproducts));
-                setproducts(loadedproducts);              
+                setproducts(loadedproducts);
             };
 
             fetchproducts().catch(error => {
-                
+
             });
         }
         else {

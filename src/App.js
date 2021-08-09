@@ -8,15 +8,12 @@ import ProductDetail from './components/ProductDetail';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useEffect } from "react";
 import Register from './components/Register';
-import Error from './components/Error';
 import Payment from './components/Payment';
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { useStateValue } from "./components/StateProvider";
 import { auth } from "./firebase";
 import Orders from './components/Orders'
-import CategoryBar from './components/CategoryBar'
-import FilteredByTag from './components/FilterByTag';
 import About from './components/About';
 import AllProducts from './components/AllProducts';
 import Footer from './components/Footer';
@@ -86,14 +83,14 @@ function App() {
             </Elements>
           </Route>}
           <Route path="/about">
-            <Header/>
+            <Header />
             <About />
-            <Footer/>
+            <Footer />
           </Route>
           <Route path="/allProducts">
-            <Header/>
+            <Header />
             <AllProducts />
-            <Footer/>
+            <Footer />
           </Route>
           <Route path="/login">
             <Login />
@@ -102,14 +99,14 @@ function App() {
             <Register />
           </Route>
           <Route exact path="/" >
-            <Header />         
+            <Header />
             <Home />
-            <Footer/>
+            <Footer />
           </Route>
           <Route path="/" >
             <Header />
             <Home />
-            <Footer/>
+            <Footer />
           </Route>
         </Switch>
       </div>

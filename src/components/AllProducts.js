@@ -4,7 +4,7 @@ import useProducts from './use-products';
 import './AllProducts.css'
 
 function AllProducts() {
-    const products = useProducts();
+  const products = useProducts();
 
   const productsList = products.map((prdct) => <Product
     key={prdct.id}
@@ -15,14 +15,14 @@ function AllProducts() {
     desc={prdct.desc}
   />
   );
-    return (
-        <div className="section-padding allProducts">
-        <div id="productList"><p className="shopProductsHeading allProductsPageHeading">OUR PRODUCTS</p></div>
-        <div className="home__row">
-          {productsList}
-        </div>
-        </div>
-    )
+  return (
+    <div className="section-padding allProducts">
+      <div id="productList"><p className="shopProductsHeading allProductsPageHeading">OUR PRODUCTS</p></div>
+      <div className="home__row">
+        {productsList}
+      </div>
+    </div>
+  )
 }
 
 export default AllProducts

@@ -1,13 +1,10 @@
 import './Home.css'
 import Product from './Product'
 import useProducts from './use-products';
-import Image2 from '../img/Captured.JPG';
 import useImages from './use-images';
 import {Link} from 'react-router-dom'
 import React, { useRef, useEffect } from 'react';
 import CSSRulePlugin from "gsap/CSSRulePlugin";
-import gsap from 'gsap';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TimelineLite, Power2 } from "gsap";
 import useOnScreen from './useOnScreen';
 
@@ -60,12 +57,11 @@ function Home() {
                     <div className="containerHome" ref={el => (container = el)}>
                         <>
                             <div className="img-containerHome" ref={img}>
-                                <img src={images[0] ? images[0].image : ''} ref={el => { image1 = el; }} />
+                                <img src={images[0] ? images[0].image : ''} ref={el => { image1 = el; }} alt="home-pg"/>
                             </div>
                         </>
                     </div>
                 </section>
-          {/* <img src={images[0] ? images[0].image : ''} className="home__container" alt="" /> */}
           </Link>
       </div>
       <div id="productList"><p className="shopProductsHeading section-padding">OUR PRODUCTS</p>
@@ -80,13 +76,12 @@ function Home() {
                     <div className="containerAbout" ref={el => (containerAbout = el)}>
                         <>
                             <div className="img-containerAbout" ref={imgAbout}>
-                                <img src={products[0] ? products[0].image : ''} ref={el => { imageAbout = el; }} />
+                                <img src={products[0] ? products[0].image : ''} ref={el => { imageAbout = el; }} alt="home-img"/>
                             </div>
                         </>
                     </div>
                 </section>
                 </Link>
-          {/* <img src={products[0] ? products[0].image : ''} alt="" className="car-img abt-img-1" /> */}
         </div>
         <div className="features">
           <div className="feature__1">

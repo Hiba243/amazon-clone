@@ -5,7 +5,7 @@
   width: 300px;
   height: 25vh;
   padding: 20px;
-  background-color: rgb(247,247,247);
+  background-color: rgb(247, 247, 247);
   border: 1px solid #dddddd;
   border-radius: 3px;
 }
@@ -15,7 +15,7 @@
   align-items: center;
 }
 
-.subtotal__heading{
+.subtotal__heading {
   text-transform: uppercase;
   font-family: "Object Sans Heavy";
   font-size: 1.5rem;
@@ -30,17 +30,17 @@
   margin-top: 10px;
   padding: 1rem !important;
 }
-@media only screen and (max-width: 1200px){
-  .subtotal{
-   width: auto;
-   height: auto;
+@media only screen and (max-width: 1200px) {
+  .subtotal {
+    width: auto;
+    height: auto;
   }
-  .subtotal__heading{
+  .subtotal__heading {
     font-size: 1.5rem;
   }
 }
-@media only screen and (max-width: 768px){
-  .subtotal__heading{
+@media only screen and (max-width: 768px) {
+  .subtotal__heading {
     font-size: 1rem;
   }
 }
