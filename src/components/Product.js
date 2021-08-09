@@ -3,18 +3,11 @@ import { Link, useHistory } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
 import React, { useRef, useEffect } from 'react';
 import CSSRulePlugin from "gsap/CSSRulePlugin";
-import { TimelineLite, Power2 } from "gsap";
 import useOnScreen from './useOnScreen';
 
 function Product({ id, title, image, price, desc }) {
-    let image1 = useRef(null);
-    let container = useRef(null);
-    let imageReveal = CSSRulePlugin.getRule(".img-container:after");
     const history = useHistory();
     const [{ basket }, dispatch] = useStateValue();
-
-    const img = useRef();
-    let isVisible = useOnScreen(img);
     const addToBasketHandler = () => {
 
         dispatch({
@@ -30,28 +23,14 @@ function Product({ id, title, image, price, desc }) {
         });
         history.push("/checkout")
     };
-    let tl = new TimelineLite();
-
-    useEffect(() => {
-        if (isVisible) {
-            tl.to(container, 0, { css: { visibility: "visible" } });
-            tl.to(imageReveal, 1, { width: "0%", ease: Power2.easeInOut });
-        }
-    }, [isVisible]);
 
     return (
 
         <div className="product">
             <Link to={"/products/" + id}>
-                <section className="main">
-                    <div className="container" ref={el => (container = el)}>
-                        <>
-                            <div className="img-container" ref={img}>
-                                <img src={image} ref={el => { image1 = el; }} alt="product" />
-                            </div>
-                        </>
-                    </div>
-                </section>
+                <div className="img-container">
+                    <img src={image} alt="product" />
+                </div>
             </Link>
             <div className="desc">
                 <div className="product__info">
